@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Typography
-permalink: /typography/
+title: Projects
+permalink: /project/
 main_nav: true
 ---
 
