@@ -9,11 +9,11 @@ main_nav: true
 
 Hello, welcome to Joohan's page!
 
-look around my cv [cv]
+look around my [cv]
 
 You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/). And you can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
 
-[cv]:https://joohan-lee.github.io/assets/CV_JoohanLee.pdf
+[cv]:{{site.baseurl}}/assets/CV_JoohanLee.pdf
 [centrarium]: https://github.com/bencentra/centrarium
 [bencentra]: http://bencentra.com
 [jekyll]: https://github.com/jekyll/jekyll
