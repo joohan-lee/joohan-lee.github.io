@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "[Kaggle] Python course"
-date:   2021-08-16T21:25:52 +05:00
+date:   2021-08-16 14:25:52 -0500
 author: Joohan Lee
 categories: Project
 tags: Python Kaggle
