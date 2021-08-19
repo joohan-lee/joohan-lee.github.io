@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "[Python] List Operators, List Methods"
+date:   2021-08-20 02:25:52 -0500
+author: Joohan Lee
+categories: Python
+tags: Language Python
+---
+
 # [Python] List Operators, List Methods
 
 # 1. 리스트 합치기
