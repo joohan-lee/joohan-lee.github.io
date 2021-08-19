@@ -3,7 +3,7 @@ layout: post
 title:  "[Python] List Operators, List Methods"
 date:   2021-08-20 02:25:52 -0500
 author: Joohan Lee
-categories: Python
+categories: Language
 tags: Language Python
 ---
 
