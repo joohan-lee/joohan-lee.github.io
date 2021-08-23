@@ -150,6 +150,18 @@ True
 1
 ```
 
+## 3) count() method
+
+⇒ 리스트의 특정 원소 개수 구하기
+
+```python
+>>> nums [1,2,2,3,3,3,4]
+>>> nums.count(2)
+2
+>>> nums.count(3)
+3
+```
+
 # 6. 요소 삭제하기
 
 ## 1) pop() method
