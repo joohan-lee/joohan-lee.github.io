@@ -1,9 +1,15 @@
+---
+layout: post
+title:  "[Coding Interview] 2.2 Return Kth To Last"
+date:   2021-08-26 02:25:52 -0500
+author: Joohan Lee
+categories: Algorithm
+tags: Language Python
+---
 # 2.2 Return Kth to Last
 
 Created: August 26, 2021 8:54 PM
 Tags: iterative, linkedlist, recursive
-interviewee: 이주한
-interviewer: 신*수
 
 # 2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 
