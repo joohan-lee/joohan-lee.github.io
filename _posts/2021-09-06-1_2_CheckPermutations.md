@@ -1,8 +1,15 @@
+---
+layout: post
+title:  "[Coding Interview] 1.2 Check Permutation"
+date:   2021-09-06 02:25:52 -0500
+author: Joohan Lee
+categories: Algorithm
+tags: Language Python
+---
 # 1.2 Check Permutation
 
 Created: September 5, 2021 11:42 PM
 Tags: ascii, sort, string
-interviewee: 이주한
 
 # 1.2 Check Permutation : Given two strings, write a method to decide if one is a permutation of the other.
 
