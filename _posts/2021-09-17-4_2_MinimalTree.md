@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "[Coding Interview] 4.2 Minimal Tree"
+date:   2021-09-17 02:25:52 -0500
+author: Joohan Lee
+categories: Algorithm
+tags: Language Python Tree
+---
 # 4.2 Minimal Tree
 
 Created: September 15, 2021 11:18 PM
