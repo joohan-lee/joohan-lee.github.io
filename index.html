@@ -1189,7 +1189,13 @@
   <!--
     - custom js link
   -->
-  <script src="./.env.js"></script>
+  <script src="./.env.prod.js"></script>
+  <script>
+    // Fallback to dev environment if prod not available (local development)
+    if (typeof window.GEMINI_API_KEY === 'undefined') {
+      document.write('<script src="./.env.dev.js"><\/script>');
+    }
+  </script>
   <script src="./assets/js/config.js"></script>
   <script src="./assets/js/career-data.js"></script>
   <script src="./assets/js/gemini-service.js"></script>
