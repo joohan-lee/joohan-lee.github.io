@@ -135,10 +135,13 @@ CAREER CONTEXT:\n`;
         ]
       };
 
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxc3ZlYWFocm1md2tveGhtcXZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0MTM4NzYsImV4cCI6MjA2ODk4OTg3Nn0.Ivsc4-KV_YFB7gOKXZDkITcZK9dVepjhprqXv-5Vk3U';
+      
       const response = await fetch(this.supabaseUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify(requestBody)
       });

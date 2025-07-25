@@ -51,9 +51,7 @@ const CONFIG = {
 
 // Validation function to check if Supabase URL is configured
 function isSupabaseConfigured() {
-  return CONFIG.SUPABASE_FUNCTION_URL && 
-         CONFIG.SUPABASE_FUNCTION_URL !== 'https://your-project-id.supabase.co/functions/v1/gemini-proxy' &&
-         CONFIG.SUPABASE_FUNCTION_URL.includes('supabase.co');
+  return CONFIG.SUPABASE_FUNCTION_URL 
 }
 
 // Get a random welcome message

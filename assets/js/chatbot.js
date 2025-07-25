@@ -13,6 +13,7 @@ class CareerChatbot {
   init() {
     // Initialize Gemini service if Supabase is configured
     if (isSupabaseConfigured()) {
+      console.debug("supabase configured")
       this.geminiService = new GeminiService(CONFIG.SUPABASE_FUNCTION_URL);
     }
     
@@ -122,7 +123,7 @@ class CareerChatbot {
     this.addMessage(welcomeMessage, 'bot');
     
     // Add setup message if API key is not configured
-    if (!isApiKeyConfigured()) {
+    if (!isSupabaseConfigured()) {
       setTimeout(() => {
         const setupMessage = "⚠️ Note: I'm currently running in demo mode. To enable full AI capabilities, please configure your Gemini API key in the config.js file.";
         this.addMessage(setupMessage, 'bot');
@@ -149,7 +150,7 @@ class CareerChatbot {
       let response;
       
       // Use Gemini API if available, otherwise fall back to local search
-      if (this.geminiService && isApiKeyConfigured()) {
+      if (this.geminiService && isSupabaseConfigured()) {
         response = await this.geminiService.generateResponse(message, careerData);
       } else {
         response = this.processMessageLocally(message);
