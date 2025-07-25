@@ -1,3 +1,5 @@
 # Environment files 
 .env.dev.js
 # .env.prod.js is created by GitHub Actions
+
+.mcp.json

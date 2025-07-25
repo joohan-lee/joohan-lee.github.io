@@ -1,8 +1,7 @@
-// Gemini API Service for RAG-based career chatbot
+// Gemini API Service for RAG-based career chatbot (via Supabase Edge Function)
 class GeminiService {
-  constructor(apiKey) {
-    this.apiKey = apiKey;
-    this.baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+  constructor(supabaseUrl) {
+    this.supabaseUrl = supabaseUrl;
     this.conversationHistory = [];
   }
 
@@ -136,7 +135,7 @@ CAREER CONTEXT:\n`;
         ]
       };
 
-      const response = await fetch(`${this.baseUrl}?key=${this.apiKey}`, {
+      const response = await fetch(this.supabaseUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +169,7 @@ CAREER CONTEXT:\n`;
       }
 
     } catch (error) {
-      console.error('Gemini API Error:', error);
+      console.error('Supabase Gemini Proxy Error:', error);
       return this.getFallbackResponse(userMessage);
     }
   }

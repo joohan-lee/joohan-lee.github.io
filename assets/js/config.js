@@ -1,7 +1,7 @@
 // Configuration for the AI-powered career chatbot
 const CONFIG = {
-  // Gemini API Configuration
-  GEMINI_API_KEY: (typeof window !== 'undefined' && window.ENV) ? window.ENV.GEMINI_API_KEY : '',
+  // Supabase Edge Function URL
+  SUPABASE_FUNCTION_URL: 'https://sqsveaahrmfwkoxhmqvj.supabase.co/functions/v1/gemini-proxy',
   
   // Chatbot Settings
   CHATBOT_SETTINGS: {
@@ -49,11 +49,11 @@ const CONFIG = {
   ]
 };
 
-// Validation function to check if API key is configured
-function isApiKeyConfigured() {
-  return CONFIG.GEMINI_API_KEY && 
-         CONFIG.GEMINI_API_KEY !== 'YOUR_GEMINI_API_KEY_HERE' && 
-         CONFIG.GEMINI_API_KEY.length > 10;
+// Validation function to check if Supabase URL is configured
+function isSupabaseConfigured() {
+  return CONFIG.SUPABASE_FUNCTION_URL && 
+         CONFIG.SUPABASE_FUNCTION_URL !== 'https://your-project-id.supabase.co/functions/v1/gemini-proxy' &&
+         CONFIG.SUPABASE_FUNCTION_URL.includes('supabase.co');
 }
 
 // Get a random welcome message
@@ -64,5 +64,5 @@ function getRandomWelcomeMessage() {
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CONFIG, isApiKeyConfigured, getRandomWelcomeMessage };
+  module.exports = { CONFIG, isSupabaseConfigured, getRandomWelcomeMessage };
 }

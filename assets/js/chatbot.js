@@ -11,9 +11,9 @@ class CareerChatbot {
   }
 
   init() {
-    // Initialize Gemini service if API key is configured
-    if (isApiKeyConfigured()) {
-      this.geminiService = new GeminiService(CONFIG.GEMINI_API_KEY);
+    // Initialize Gemini service if Supabase is configured
+    if (isSupabaseConfigured()) {
+      this.geminiService = new GeminiService(CONFIG.SUPABASE_FUNCTION_URL);
     }
     
     this.createChatbotUI();
