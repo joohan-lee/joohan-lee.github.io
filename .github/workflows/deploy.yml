@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Create .env.js file
+    - name: Create .env.prod.js file
       run: |
-        echo "window.GEMINI_API_KEY = '${{ secrets.GEMINI_API_KEY }}';" > .env.js
+        echo "window.GEMINI_API_KEY = '${{ secrets.GEMINI_API_KEY }}';" > .env.prod.js
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
