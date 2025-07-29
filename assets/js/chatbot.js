@@ -7,10 +7,21 @@ class CareerChatbot {
     this.chatHistory = [];
     this.geminiService = null;
     this.isTyping = false;
+    this.dataLoader = null;
     this.init();
   }
 
-  init() {
+  async init() {
+    // Initialize markdown data loader
+    this.dataLoader = window.markdownDataLoader || new MarkdownDataLoader();
+    
+    try {
+      await this.dataLoader.loadPortfolioData();
+      console.log('Portfolio data loaded from markdown');
+    } catch (error) {
+      console.warn('Failed to load markdown data, falling back to JS data:', error);
+    }
+    
     // Initialize Gemini service if Supabase is configured
     if (isSupabaseConfigured()) {
       console.debug("supabase configured")
@@ -151,7 +162,8 @@ class CareerChatbot {
       
       // Use Gemini API if available, otherwise fall back to local search
       if (this.geminiService && isSupabaseConfigured()) {
-        response = await this.geminiService.generateResponse(message, careerData);
+        const contextData = this.dataLoader ? this.dataLoader.getContextForLLM() : (window.careerData || 'No data available');
+        response = await this.geminiService.generateResponse(message, contextData);
       } else {
         response = this.processMessageLocally(message);
       }
@@ -224,7 +236,15 @@ class CareerChatbot {
   }
 
   processMessageLocally(message) {
-    const searchResults = searchCareerData(message);
+    let searchResults = [];
+    
+    // Try to use markdown data loader first
+    if (this.dataLoader) {
+      searchResults = this.dataLoader.searchPortfolioData(message);
+    } else if (typeof searchCareerData !== 'undefined') {
+      // Fallback to JS data
+      searchResults = searchCareerData(message);
+    }
     
     if (searchResults.length === 0) {
       return this.getGenericResponse(message);

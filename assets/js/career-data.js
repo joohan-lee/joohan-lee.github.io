@@ -10,7 +10,39 @@ const personal = {
   email: "joohan224@gmail.com",
   avatar: "./assets/images/my-avatar2.png",
   
-  summary: "Passionate Software Engineer with 6+ years of experience in full-stack web development, mobile applications, and cloud architecture. I specialize in creating scalable solutions and have a strong background in modern JavaScript frameworks, cloud technologies, and agile development practices.",
+  summary: `Passionate Software Engineer with AI specialization bridging research and industry. <br>
+I'm Joohan Lee, a software engineer with a unique blend of cutting-edge research experience and practical industry expertise. Currently serving as a Gen AI Software Engineer at Samsung SDS America, I specialize in developing AI applications, RAG pipelines, and multimodal systems using state-of-the-art technologies. <br>
+<br>
+🏆 Key Achievements
+<br>
+1st Place Winner at IEEE ICASSP Signal Processing Grand Challenges (ML competition)
+Published researcher with multiple IEEE papers in AI communications and machine learning
+USC Computer Science Master's graduate with focus on AI/ML systems
+<br>
+
+🚀 What Sets Me Apart
+
+<br>
+Research-to-Production Pipeline: Successfully transitioned from academic research (USC Graduate Research Assistant) to industry applications, bringing theoretical knowledge into real-world solutions
+Full-Stack AI Development: End-to-end experience from model training (PyTorch, TensorFlow) to deployment (AWS, Docker) and user interfaces (React, Angular)
+Proven Innovation: Developed novel approaches like VQ-VAE for robust communication systems and noise-robust learning frameworks
+
+💻 Technical Expertise
+
+AI/ML: PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock
+Backend: Node.js, Flask, RESTful APIs, MySQL, Nginx
+Cloud & DevOps: AWS (EC2, Lambda, Amplify), Linux, Docker
+Languages: Python, JavaScript/TypeScript, C/C++, Java
+
+🎯 Current Focus
+Building next-generation AI applications that solve real-world problems, with particular interest in:
+
+Large Language Model applications and RAG systems
+On-device AI communication frameworks
+Noise-robust machine learning systems
+Scalable backend architectures for AI services`,
+
+  // summary: "",
   
   personality: "I'm passionate about technology, continuous learning, and building solutions that make a real impact. I enjoy collaborating with teams and mentoring junior developers.",
   
@@ -39,6 +71,7 @@ const personal = {
     // Add GitHub, LinkedIn, etc. as needed
   ]
 };
+
 
 // --- experience.js ---
 // Work experience and professional history

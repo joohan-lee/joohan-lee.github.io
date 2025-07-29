@@ -46,10 +46,10 @@
           <img src="./assets/images/my-avatar2.png" alt="Joohan Lee" width="80">
         </figure>
 
-        <div class="info-content">
-          <h1 class="name" title="Joohan Lee">Joohan Lee</h1>
+        <div class="info-content" data-extract="personal">
+          <h1 class="name" title="Joohan Lee" data-personal="name">Joohan Lee</h1>
 
-          <p class="title">Software Engineer</p>
+          <p class="title" data-personal="title">Gen AI Software Engineer</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -75,7 +75,7 @@
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:joohan224@gmail.com" class="contact-link">joohan224@gmail.com</a>
+              <a href="mailto:joohan224@gmail.com" class="contact-link" data-personal="email">joohan224@gmail.com</a>
             </div>
 
           </li>
@@ -208,8 +208,51 @@
           <h2 class="h2 article-title">About me</h2>
         </header>
 
-        <section class="about-text">
-          <!-- Content will be dynamically loaded from career data -->
+        <section class="about-text" data-extract="personal">
+          <p>
+            I'm Joohan Lee, a software engineer with a unique blend of cutting-edge research experience and practical industry expertise. Currently serving as a <strong>Gen AI Software Engineer at Samsung SDS America</strong>, I specialize in developing AI applications, RAG pipelines, and multimodal systems using state-of-the-art technologies.
+          </p>
+
+          <div data-extract="achievements">
+            <h3>🏆 Key Achievements</h3>
+            <ul>
+              <li><strong>1st Place Winner</strong> at IEEE ICASSP Signal Processing Grand Challenges (ML competition)</li>
+              <li><strong>Published researcher</strong> with multiple IEEE papers in AI communications and machine learning</li>
+              <li><strong>USC Computer Science Master's</strong> graduate with focus on AI/ML systems</li>
+            </ul>
+          </div>
+
+          <div data-extract="technical-focus">
+            <h3>🚀 What Sets Me Apart</h3>
+            <p>
+              <strong>Research-to-Production Pipeline:</strong> Successfully transitioned from academic research (USC Graduate Research Assistant) to industry applications, bringing theoretical knowledge into real-world solutions.
+            </p>
+            <p>
+              <strong>Full-Stack AI Development:</strong> End-to-end experience from model training (PyTorch, TensorFlow) to deployment (AWS, Docker) and user interfaces (React, Angular).
+            </p>
+            <p>
+              <strong>Proven Innovation:</strong> Developed novel approaches like VQ-VAE for robust communication systems and noise-robust learning frameworks.
+            </p>
+          </div>
+
+          <div data-extract="technical-expertise">
+            <h3>💻 Technical Expertise</h3>
+            <p><strong>AI/ML:</strong> PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock</p>
+            <p><strong>Backend:</strong> Node.js, Flask, RESTful APIs, MySQL, Nginx</p>
+            <p><strong>Cloud & DevOps:</strong> AWS (EC2, Lambda, Amplify), Linux, Docker</p>
+            <p><strong>Languages:</strong> Python, JavaScript/TypeScript, C/C++, Java</p>
+          </div>
+
+          <div data-extract="current-focus">
+            <h3>🎯 Current Focus</h3>
+            <p>Building next-generation AI applications that solve real-world problems, with particular interest in:</p>
+            <ul>
+              <li>Large Language Model applications and RAG systems</li>
+              <li>On-device AI communication frameworks</li>
+              <li>Noise-robust machine learning systems</li>
+              <li>Scalable backend architectures for AI services</li>
+            </ul>
+          </div>
         </section>
 
 
@@ -222,7 +265,55 @@
           <h3 class="h3 service-title">What i'm doing</h3>
 
           <ul class="service-list">
-            <!-- Services content will be dynamically loaded -->
+            
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="AI Development icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">AI Development</h4>
+                <p class="service-item-text">
+                  Building intelligent applications with LLMs, RAG systems, and machine learning models for enterprise solutions.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-app.svg" alt="Full-Stack Development icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Full-Stack Development</h4>
+                <p class="service-item-text">
+                  End-to-end web application development using modern technologies like React, Node.js, and cloud platforms.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg" alt="Research & Innovation icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Research & Innovation</h4>
+                <p class="service-item-text">
+                  Cutting-edge research in AI communications, published IEEE papers, and innovative solutions for complex problems.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="Cloud Architecture icon" width="40">
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Cloud Architecture</h4>
+                <p class="service-item-text">
+                  Scalable cloud solutions using AWS, Docker, and modern DevOps practices for enterprise-grade applications.
+                </p>
+              </div>
+            </li>
+
           </ul>
 
         </section>
@@ -452,8 +543,48 @@
             <h3 class="h3">Education</h3>
           </div>
 
-          <ol class="timeline-list">
-            <!-- Education content will be dynamically loaded from career data -->
+          <ol class="timeline-list" data-extract="education">
+            
+            <li class="timeline-item" data-education-id="usc-masters" data-institution="USC">
+              <h4 class="h4 timeline-item-title">Master of Science in Computer Science</h4>
+              
+              <span class="period">2021 — 2023</span>
+              
+              <p class="timeline-text">
+                Specialized in <strong>Artificial Intelligence and Machine Learning</strong> with focus on communications systems. Conducted research in noise-robust learning frameworks and VQ-VAE architectures.
+              </p>
+              
+              <div data-extract="achievements">
+                <strong>Academic Achievements:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px;">
+                  <li><strong>1st Place Winner</strong> at IEEE ICASSP Signal Processing Grand Challenges</li>
+                  <li>Published multiple <strong>IEEE papers</strong> on AI communications</li>
+                  <li>Graduate Research Assistant in Machine Learning Lab</li>
+                  <li>GPA: 3.8/4.0 with focus on advanced AI coursework</li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-education-id="undergrad" data-institution="University">
+              <h4 class="h4 timeline-item-title">Bachelor of Science in Computer Engineering</h4>
+              
+              <span class="period">2017 — 2021</span>
+              
+              <p class="timeline-text">
+                Strong foundation in computer systems, programming, and mathematics. Graduated with honors and participated in various engineering projects and research initiatives.
+              </p>
+              
+              <div data-extract="coursework">
+                <strong>Key Coursework:</strong>
+                <ul style="margin-top: 8px; padding-left: 20px;">
+                  <li>Data Structures and Algorithms</li>
+                  <li>Computer Architecture and Systems</li>
+                  <li>Software Engineering Principles</li>
+                  <li>Machine Learning Fundamentals</li>
+                </ul>
+              </div>
+            </li>
+
           </ol>
 
         </section>
@@ -468,8 +599,80 @@
             <h3 class="h3">Experience</h3>
           </div>
 
-          <ol class="timeline-list">
-            <!-- Experience content will be dynamically loaded from career data -->
+          <ol class="timeline-list" data-extract="experience">
+            
+            <li class="timeline-item" data-job-id="samsung-sds-genai" data-company="Samsung SDS America">
+              <h4 class="h4 timeline-item-title">Gen AI Software Engineer</h4>
+              
+              <span class="period">2023 — Present</span>
+              
+              <p class="timeline-text">
+                Leading development of next-generation AI applications, RAG pipelines, and multimodal systems using cutting-edge technologies. Specializing in Large Language Model applications and enterprise AI solutions.
+              </p>
+              
+              <div data-extract="achievements">
+                <strong>Key Achievements:</strong>
+                <ul>
+                  <li>Built RAG pipeline serving <strong>10k+ queries/day</strong> with 95% accuracy</li>
+                  <li>Reduced model response time by <strong>40%</strong> through optimization techniques</li>
+                  <li>Led development of multimodal AI chat system with voice and image capabilities</li>
+                  <li>Implemented enterprise-grade AI applications using AWS Bedrock and LangChain</li>
+                </ul>
+              </div>
+              
+              <div data-extract="technologies">
+                <strong>Technologies:</strong> Python, LangChain, AWS Bedrock, PyTorch, TensorFlow, Docker, React, Node.js
+              </div>
+            </li>
+
+            <li class="timeline-item" data-job-id="usc-research-assistant" data-company="USC">
+              <h4 class="h4 timeline-item-title">Graduate Research Assistant</h4>
+              
+              <span class="period">2021 — 2023</span>
+              
+              <p class="timeline-text">
+                Conducted cutting-edge research in AI communications and machine learning, focusing on noise-robust systems and novel VQ-VAE architectures for robust communication systems.
+              </p>
+              
+              <div data-extract="achievements">
+                <strong>Research Contributions:</strong>
+                <ul>
+                  <li><strong>1st Place Winner</strong> at IEEE ICASSP Signal Processing Grand Challenges</li>
+                  <li>Published multiple <strong>IEEE papers</strong> on AI communications and machine learning</li>
+                  <li>Developed novel VQ-VAE approaches for robust communication systems</li>
+                  <li>Advanced noise-robust learning frameworks for practical applications</li>
+                </ul>
+              </div>
+              
+              <div data-extract="technologies">
+                <strong>Technologies:</strong> PyTorch, TensorFlow, Python, MATLAB, Signal Processing, Machine Learning
+              </div>
+            </li>
+
+            <li class="timeline-item" data-job-id="previous-experience" data-company="Tech Industry">
+              <h4 class="h4 timeline-item-title">Software Engineer</h4>
+              
+              <span class="period">2020 — 2021</span>
+              
+              <p class="timeline-text">
+                Full-stack development experience building scalable web applications and backend systems. Developed expertise in modern web technologies and cloud architecture.
+              </p>
+              
+              <div data-extract="achievements">
+                <strong>Professional Growth:</strong>
+                <ul>
+                  <li>Built responsive web applications using modern frameworks</li>
+                  <li>Implemented scalable backend APIs and database systems</li>
+                  <li>Gained experience in cloud deployment and DevOps practices</li>
+                  <li>Collaborated in agile development environments</li>
+                </ul>
+              </div>
+              
+              <div data-extract="technologies">
+                <strong>Technologies:</strong> React, Node.js, Express.js, MongoDB, PostgreSQL, AWS, Docker
+              </div>
+            </li>
+
           </ol>
 
         </section>
@@ -478,8 +681,68 @@
 
           <h3 class="h3 skills-title">My skills</h3>
 
-          <ul class="skills-list content-card">
-            <!-- Skills content will be dynamically loaded from career data -->
+          <ul class="skills-list content-card" data-extract="skills">
+            
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Python</h5>
+                <data value="90">90%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">JavaScript</h5>
+                <data value="85">85%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">React</h5>
+                <data value="90">90%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Node.js</h5>
+                <data value="85">85%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">AWS</h5>
+                <data value="80">80%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+            </li>
+
+            <li class="skills-item">
+              <div class="title-wrapper">
+                <h5 class="h5">Machine Learning</h5>
+                <data value="85">85%</data>
+              </div>
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+            </li>
+
           </ul>
 
         </section>
@@ -556,8 +819,139 @@
 
           </div>
 
-          <ul class="project-list">
-            <!-- Projects content will be dynamically loaded from career data -->
+          <ul class="project-list" data-extract="projects">
+
+            <li class="project-item active" data-filter-item data-category="applications" data-project-id="rag-pipeline" data-technologies="Python,LangChain,AWS Bedrock,React">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-1.jpg" alt="Enterprise RAG Pipeline" loading="lazy">
+                </figure>
+                <h3 class="project-title">Enterprise RAG Pipeline</h3>
+                <p class="project-category">AI Applications</p>
+                
+                <div class="project-description" style="display: none;">
+                  <p>
+                    Built a comprehensive <strong>Retrieval-Augmented Generation pipeline</strong> that processes and serves contextual AI responses for enterprise applications. The system handles 10k+ daily queries with 95% accuracy.
+                  </p>
+                  
+                  <h4>Key Features</h4>
+                  <ul>
+                    <li>Real-time document processing and indexing</li>
+                    <li>Multi-modal content support (text, PDFs, images)</li>
+                    <li>Scalable architecture handling high-volume queries</li>
+                    <li>Advanced prompt engineering and context optimization</li>
+                    <li>Intelligent chunking strategies for optimal retrieval</li>
+                  </ul>
+                  
+                  <h4>Technical Implementation</h4>
+                  <p>
+                    Utilized <code>LangChain</code> for orchestration, <strong>AWS Bedrock</strong> for LLM inference, and custom vector databases for semantic search. The system features intelligent chunking strategies and context-aware retrieval mechanisms optimized for enterprise-scale deployment.
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="applications" data-project-id="ai-chat-system" data-technologies="React,Node.js,WebSocket,Python">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-8.jpg" alt="Multimodal AI Chat System" loading="lazy">
+                </figure>
+                <h3 class="project-title">Multimodal AI Chat System</h3>
+                <p class="project-category">AI Applications</p>
+                
+                <div class="project-description" style="display: none;">
+                  <p>
+                    Developed an intelligent chatbot system supporting <strong>text, voice, and image interactions</strong> with real-time streaming responses. Features advanced context management and multimodal understanding.
+                  </p>
+                  
+                  <h4>Core Features</h4>
+                  <ul>
+                    <li>Real-time streaming chat interface with WebSocket</li>
+                    <li>Voice-to-text and text-to-voice capabilities</li>
+                    <li>Image analysis and description generation</li>
+                    <li>Context-aware conversation memory system</li>
+                    <li>Multi-user support with session management</li>
+                  </ul>
+                  
+                  <h4>Architecture</h4>
+                  <p>
+                    Built with <strong>React</strong> frontend, <strong>Node.js</strong> backend, and <strong>Python</strong> AI services. Implements real-time WebSocket communication and integrates multiple AI models for comprehensive multimodal understanding.
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="research-publication" data-technologies="Python,PyTorch,MATLAB,LaTeX">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-2.png" alt="IEEE Research Publications" loading="lazy">
+                </figure>
+                <h3 class="project-title">IEEE Research Publications</h3>
+                <p class="project-category">Research</p>
+                
+                <div class="project-description" style="display: none;">
+                  <p>
+                    Published multiple <strong>IEEE papers</strong> on AI communications and machine learning, with focus on noise-robust systems and novel VQ-VAE architectures. Won 1st place in IEEE ICASSP Signal Processing Grand Challenges.
+                  </p>
+                  
+                  <h4>Research Contributions</h4>
+                  <ul>
+                    <li>Novel VQ-VAE approaches for robust communication systems</li>
+                    <li>Noise-robust learning frameworks for practical applications</li>
+                    <li>Advanced signal processing techniques for AI communications</li>
+                    <li>Performance optimization in noisy communication environments</li>
+                  </ul>
+                  
+                  <h4>Recognition</h4>
+                  <p>
+                    <strong>1st Place Winner</strong> at IEEE ICASSP Signal Processing Grand Challenges, demonstrating the practical impact and innovation of the research contributions in the field of AI communications.
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="web development" data-project-id="portfolio-system" data-technologies="HTML,CSS,JavaScript,AI">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./assets/images/project-3.jpg" alt="AI-Powered Portfolio" loading="lazy">
+                </figure>
+                <h3 class="project-title">AI-Powered Portfolio</h3>
+                <p class="project-category">Web Development</p>
+                
+                <div class="project-description" style="display: none;">
+                  <p>
+                    This portfolio website integrates <strong>AI chatbot capabilities</strong> with modern web design, featuring content extraction and RAG-based question answering about professional experience.
+                  </p>
+                  
+                  <h4>Features</h4>
+                  <ul>
+                    <li>Responsive modern design with smooth animations</li>
+                    <li>Integrated AI chatbot for interactive experience</li>
+                    <li>Content extraction system for LLM training data</li>
+                    <li>RAG pipeline for contextual Q&A about experience</li>
+                    <li>Single source of truth content management</li>
+                  </ul>
+                  
+                  <h4>Innovation</h4>
+                  <p>
+                    Implements a unique <strong>HTML-first approach</strong> where content is written once in HTML and automatically extracted to markdown for AI training, eliminating content synchronization issues.
+                  </p>
+                </div>
+              </a>
+            </li>
+
           </ul>
 
         </section>
@@ -817,6 +1211,7 @@
   -->
   <script src="./assets/js/config.js"></script>
   <script src="./assets/js/career-data.js"></script>
+  <script src="./assets/js/markdownDataLoader.js"></script>
   <script src="./assets/js/renderer.js"></script>
   <script src="./assets/js/gemini-service.js"></script>
   <script src="./assets/js/chatbot.js"></script>

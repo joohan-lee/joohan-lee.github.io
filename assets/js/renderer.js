@@ -1,120 +1,17 @@
-// Dynamic HTML Renderer - renders portfolio content from career data
+// Portfolio Renderer - minimal renderer for HTML-first approach
 class PortfolioRenderer {
   constructor() {
-    this.careerData = window.careerData;
+    this.careerData = window.careerData; // Keep for backward compatibility and skills
   }
 
-  // Initialize and render all sections
+  // Initialize - most content is now in HTML, minimal JS needed
   init() {
-    if (!this.careerData) {
-      console.error('Career data not loaded');
-      return;
-    }
-    
-    this.renderPersonalInfo();
-    this.renderExperience();
-    this.renderEducation();
-    this.renderSkills();
-    this.renderProjects();
-    this.renderTestimonials();
-    this.renderClients();
+    // All content is now in HTML - no dynamic rendering needed
+    console.log('Portfolio renderer initialized - using HTML-first approach');
   }
 
-  // Render personal information in sidebar
-  renderPersonalInfo() {
-    const personal = this.careerData.personal;
-    
-    // Update name and title
-    const nameElement = document.querySelector('.name');
-    const titleElement = document.querySelector('.title');
-    const avatarElement = document.querySelector('.avatar-box img');
-    
-    if (nameElement) nameElement.textContent = personal.name;
-    if (titleElement) titleElement.textContent = personal.title;
-    if (avatarElement) {
-      avatarElement.src = personal.avatar;
-      avatarElement.alt = personal.name;
-    }
-
-    // Update about me section
-    const aboutTextSection = document.querySelector('.about-text');
-    if (aboutTextSection && personal.summary) {
-      // Split summary into more natural paragraphs
-      const sentences = personal.summary.split('. ');
-      const midPoint = Math.ceil(sentences.length / 2);
-      const firstParagraph = sentences.slice(0, midPoint).join('. ') + '.';
-      const secondParagraph = sentences.slice(midPoint).join('. ');
-      
-      aboutTextSection.innerHTML = `
-        <p>${firstParagraph}</p>
-        <p>${secondParagraph}</p>
-      `;
-    }
-
-    // Update contacts
-    this.renderContacts(personal);
-  }
-
-  // Render contact information
-  renderContacts(personal) {
-    const contactsList = document.querySelector('.contacts-list');
-    if (!contactsList) return;
-
-    const contactsHTML = `
-      <li class="contact-item">
-        <div class="icon-box">
-          <ion-icon name="mail-outline"></ion-icon>
-        </div>
-        <div class="contact-info">
-          <p class="contact-title">Email</p>
-          <a href="mailto:${personal.email}" class="contact-link">${personal.email}</a>
-        </div>
-      </li>
-      <li class="contact-item">
-        <div class="icon-box">
-          <ion-icon name="location-outline"></ion-icon>
-        </div>
-        <div class="contact-info">
-          <p class="contact-title">Location</p>
-          <address>${personal.location}</address>
-        </div>
-      </li>
-    `;
-    
-    contactsList.innerHTML = contactsHTML;
-  }
-
-  // Render experience timeline
-  renderExperience() {
-    const experienceTimeline = document.querySelector('.resume .timeline:last-of-type .timeline-list');
-    if (!experienceTimeline) return;
-
-    const experienceHTML = this.careerData.experience.map(exp => `
-      <li class="timeline-item">
-        <h4 class="h4 timeline-item-title">${exp.position}</h4>
-        <span>${exp.period}</span>
-        <p class="timeline-text">${exp.description}</p>
-      </li>
-    `).join('');
-
-    experienceTimeline.innerHTML = experienceHTML;
-  }
-
-  // Render education timeline
-  renderEducation() {
-    const educationTimeline = document.querySelector('.resume .timeline:first-of-type .timeline-list');
-    if (!educationTimeline) return;
-
-    const educationHTML = this.careerData.education.map(edu => `
-      <li class="timeline-item">
-        <h4 class="h4 timeline-item-title">${edu.degree}</h4>
-        <span>${edu.period}</span>
-        <p class="timeline-text">${edu.description}</p>
-      </li>
-    `).join('');
-
-    educationTimeline.innerHTML = educationHTML;
-  }
+  // Personal info, experience, education, and projects are now in HTML
+  // No need for dynamic rendering of these sections
 
   // Render skills section
   renderSkills() {
@@ -154,40 +51,7 @@ class PortfolioRenderer {
     skillsList.innerHTML = skillsHTML;
   }
 
-  // Render projects portfolio
-  renderProjects() {
-    const projectsList = document.querySelector('.project-list');
-    if (!projectsList) return;
-
-    const projectsHTML = this.careerData.projects.map(project => `
-      <li class="project-item active" data-filter-item data-category="${project.category}">
-        <a href="#">
-          <figure class="project-img">
-            <div class="project-item-icon-box">
-              <ion-icon name="eye-outline"></ion-icon>
-            </div>
-            <img src="${project.images.thumbnail}" alt="${project.name}" loading="lazy">
-          </figure>
-          <h3 class="project-title">${project.name}</h3>
-          <p class="project-category">${this.capitalizeFirstLetter(project.category)}</p>
-        </a>
-      </li>
-    `).join('');
-
-    projectsList.innerHTML = projectsHTML;
-  }
-
-  // Render testimonials (keeping static for now as no testimonial data)
-  renderTestimonials() {
-    // Keep existing testimonials as they are static content
-    // Could be enhanced to use dynamic testimonial data if available
-  }
-
-  // Render clients (keeping static for now)
-  renderClients() {
-    // Keep existing clients as they are static content
-    // Could be enhanced to use dynamic client data if available
-  }
+  // Projects are now in HTML - no dynamic rendering needed
 
   // Render services section
   renderServices() {
@@ -245,14 +109,13 @@ class PortfolioRenderer {
   }
 }
 
-// Initialize renderer when DOM is loaded and career data is available
+// Initialize renderer when DOM is loaded (minimal version for HTML-first approach)
 document.addEventListener('DOMContentLoaded', function() {
-  // Wait for career data to be loaded
+  // Wait for career data to be loaded (mainly for skills)
   const initRenderer = () => {
     if (window.careerData) {
       const renderer = new PortfolioRenderer();
       renderer.init();
-      renderer.renderServices(); // Render services as well
     } else {
       // Retry after a short delay if career data isn't loaded yet
       setTimeout(initRenderer, 100);
