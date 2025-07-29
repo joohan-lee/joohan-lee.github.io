@@ -117,21 +117,14 @@ npm run build            # Full build process
 
 ## 🤖 AI Chatbot Setup
 
-### 1. **Get Your Gemini API Key**
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in and create a new API key
-3. Copy the generated key
-
-### 2. **Configure the Chatbot**
-Edit `assets/js/config.js`:
+### 1. **Supabase Configuration (Already Set Up)**
+The chatbot uses Supabase Edge Functions as a proxy to Gemini API. The configuration is already set up:
 
 ```javascript
+// In assets/js/config.js
 const CONFIG = {
-  // Replace with your actual API key
-  GEMINI_API_KEY: 'your-actual-api-key-here',
-  
-  // Supabase configuration (optional)
-  SUPABASE_FUNCTION_URL: 'your-supabase-function-url',
+  // Supabase Edge Function URL (already configured)
+  SUPABASE_FUNCTION_URL: 'https://sqsveaahrmfwkoxhmqvj.supabase.co/functions/v1/gemini-proxy',
   
   // Chatbot settings
   CHATBOT_SETTINGS: {
@@ -140,18 +133,11 @@ const CONFIG = {
     maxHistoryLength: 10,             // Conversation history limit
     responseTimeout: 30000,           // API timeout in ms
     fallbackToLocal: true            // Use local search as fallback
-  },
-  
-  // Quick suggestion prompts
-  QUICK_SUGGESTIONS: [
-    { text: "Tell me about your experience", prompt: "What is your professional background?" },
-    { text: "What are your key skills?", prompt: "What technologies do you specialize in?" },
-    { text: "Show me your projects", prompt: "What projects have you worked on?" }
-  ]
+  }
 };
 ```
 
-### 3. **Customize Responses**
+### 2. **Customize Responses**
 The chatbot automatically uses content extracted from your HTML. When you update your portfolio content, the AI responses stay synchronized.
 
 ## 🎯 HTML-First Benefits
@@ -262,10 +248,10 @@ Modify the `QUICK_SUGGESTIONS` array in `config.js` to change conversation start
 
 ## 🔒 Security & Best Practices
 
-### **API Key Security**
-- Never commit API keys to version control
-- Use environment variables for production deployments
-- Consider implementing server-side proxy for production apps
+### **Supabase Security**
+- Supabase Edge Functions handle API key management securely
+- No direct API keys exposed in client-side code
+- Rate limiting and CORS handled by Supabase proxy
 
 ### **Content Management**
 - ✅ **Edit HTML files** (single source of truth)
@@ -319,9 +305,9 @@ jobs:
 ## 🆘 Troubleshooting
 
 ### **Chatbot Shows "Demo Mode"**
-- Check if your Gemini API key is configured in `config.js`
-- Verify the API key is valid and active
-- Ensure you haven't exceeded API rate limits
+- Check if your Supabase function URL is configured in `config.js`
+- Verify the Supabase Edge Function is deployed and accessible
+- Check browser console for API connection errors
 
 ### **Content Not Updating in AI**
 - Run `npm run extract` after making HTML changes
@@ -379,8 +365,7 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 
 1. Clone this repository
 2. Add your content to `index.html`
-3. Configure your Gemini API key
-4. Run `npm run extract && npm start`
-5. Deploy and impress your visitors with an AI that knows your career inside out!
+3. Run `npm run extract && npm start`
+4. Deploy and impress your visitors with an AI that knows your career inside out!
 
 Your portfolio will stand out with this unique combination of professional design and intelligent AI interaction. 🚀
