@@ -188,6 +188,34 @@ extracted_date: "${new Date().toISOString()}"
     return markdown + content;
   }
 
+  // Extract education information
+  extractEducation(document) {
+    const educationItems = document.querySelectorAll('[data-extract="education"] .timeline-item, [data-education-id]');
+    let markdown = `---
+type: "education"
+extracted_date: "${new Date().toISOString()}"
+---
+
+# Education
+
+`;
+
+    educationItems.forEach(item => {
+      const educationId = item.getAttribute('data-education-id');
+      const institution = item.getAttribute('data-institution');
+      const degree = item.querySelector('h3, h4, .degree-title')?.textContent || '';
+      const period = item.querySelector('.period')?.textContent || '';
+      
+      markdown += `## ${degree}${institution ? ` at ${institution}` : ''}\n`;
+      if (period) markdown += `**Duration**: ${period}\n\n`;
+      
+      const content = this.htmlToMarkdown(item);
+      markdown += content + '\n\n';
+    });
+
+    return markdown;
+  }
+
   // Extract all content sections
   extractAll() {
     const document = this.loadHTML();
@@ -196,7 +224,8 @@ extracted_date: "${new Date().toISOString()}"
       'personal.md': this.extractPersonal(document),
       'experience.md': this.extractExperience(document),
       'projects.md': this.extractProjects(document),
-      'skills.md': this.extractSkills(document)
+      'skills.md': this.extractSkills(document),
+      'education.md': this.extractEducation(document)
     };
 
     // Write files

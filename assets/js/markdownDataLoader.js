@@ -27,10 +27,8 @@ class MarkdownDataLoader {
       this.portfolioData = {
         raw: markdownContent,
         sections: sections,
-        personal: sections.personal || '',
-        experience: sections.experience || '',
-        projects: sections.projects || '',
-        skills: sections.skills || ''
+        // Dynamically add all parsed sections as direct properties
+        ...sections
       };
       
       this.initialized = true;
@@ -52,41 +50,34 @@ class MarkdownDataLoader {
   parseMarkdownSections(content) {
     const sections = {};
     
-    // Split by section headers and organize
-    const lines = content.split('\n');
-    let currentSection = null;
-    let currentContent = [];
+    // Split by frontmatter blocks to get individual sections
+    const blocks = content.split(/^---$/m);
     
-    for (const line of lines) {
-      if (line.startsWith('# Professional Experience')) {
-        if (currentSection) {
-          sections[currentSection] = currentContent.join('\n');
+    for (let i = 0; i < blocks.length; i++) {
+      const block = blocks[i].trim();
+      if (!block) continue;
+      
+      // Check if this is a typed frontmatter block (experience, projects, skills, etc.)
+      if (block.includes('type:')) {
+        const typeMatch = block.match(/type:\s*"([^"]+)"/);
+        if (typeMatch && i + 1 < blocks.length) {
+          const sectionType = typeMatch[1];
+          const sectionContent = blocks[i + 1].trim();
+          
+          // Dynamic mapping - any type from frontmatter is automatically supported
+          sections[sectionType] = sectionContent;
+          i++; // Skip the content block since we just processed it
         }
-        currentSection = 'experience';
-        currentContent = [line];
-      } else if (line.startsWith('# Portfolio Projects') || line.includes('project-id')) {
-        if (currentSection) {
-          sections[currentSection] = currentContent.join('\n');
+      } 
+      // Handle personal section (first frontmatter with name/title)
+      else if (block.includes('name:') && block.includes('title:')) {
+        // Find the corresponding content section
+        if (i + 1 < blocks.length) {
+          const personalContent = blocks[i + 1].trim();
+          sections.personal = personalContent;
+          i++; // Skip the content block
         }
-        currentSection = 'projects';
-        currentContent = [line];
-      } else if (line.startsWith('# Technical Skills')) {
-        if (currentSection) {
-          sections[currentSection] = currentContent.join('\n');
-        }
-        currentSection = 'skills';
-        currentContent = [line];
-      } else if (!currentSection && (line.includes('Joohan Lee') || line.includes('Gen AI Software Engineer'))) {
-        currentSection = 'personal';
-        currentContent = [line];
-      } else if (currentSection) {
-        currentContent.push(line);
       }
-    }
-    
-    // Add the last section
-    if (currentSection) {
-      sections[currentSection] = currentContent.join('\n');
     }
     
     return sections;
@@ -197,7 +188,7 @@ class MarkdownDataLoader {
       return 'Portfolio data not available';
     }
     
-    return this.portfolioData.raw;
+    return this.portfolioData;
   }
 }
 

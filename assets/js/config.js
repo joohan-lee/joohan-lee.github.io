@@ -18,7 +18,10 @@ const CONFIG = {
     enabled: true,
     
     // Fallback to local search if API fails
-    fallbackToLocal: true
+    fallbackToLocal: true,
+    
+    // Debug mode - shows detailed logs
+    debug: false
   },
   
   // Welcome messages

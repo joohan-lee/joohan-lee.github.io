@@ -21,15 +21,17 @@ class GeminiService {
     ];
 
     sections.forEach(section => {
-      const sectionText = JSON.stringify(section.data).toLowerCase();
-      const matches = this.countMatches(lowercaseQuery, sectionText);
-      
-      if (matches > 0) {
-        relevantContext.push({
-          section: section.name,
-          data: section.data,
-          relevanceScore: matches * section.weight
-        });
+      if (section.data) {
+        const sectionText = JSON.stringify(section.data).toLowerCase();
+        const matches = this.countMatches(lowercaseQuery, sectionText);
+        
+        if (matches > 0) {
+          relevantContext.push({
+            section: section.name,
+            data: section.data,
+            relevanceScore: matches * section.weight
+          });
+        }
       }
     });
 
@@ -52,23 +54,28 @@ class GeminiService {
     return matches;
   }
 
-  // Create system prompt with career context
-  createSystemPrompt(relevantContext) {
-    let systemPrompt = `You are Joohan Lee's career assistant chatbot. You help visitors understand Joohan's professional background, skills, and experience. 
+  // Create system prompt with full career context
+  createSystemPrompt(careerData) {
+    let systemPrompt = `You are Joohan's AI career assistant. Answer questions about his professional background using the provided context.
 
-IMPORTANT GUIDELINES:
-- Be conversational, friendly, and professional
-- Provide specific details from the context when available
-- If asked about something not in the context, politely redirect to topics you can help with
-- Keep responses concise but informative (2-3 sentences usually)
-- Use emojis sparingly and appropriately
+Guidelines: Be conversational, accurate, and concise (2-3 sentences). Use specific details from context.
 
-CAREER CONTEXT:\n`;
+Complete Career Profile:\n`;
 
-    relevantContext.forEach(context => {
-      systemPrompt += `\n${context.section.toUpperCase()}:\n`;
-      systemPrompt += JSON.stringify(context.data, null, 2) + '\n';
-    });
+    // Use full raw data for complete context
+    if (careerData.raw) {
+      systemPrompt += careerData.raw;
+    } else {
+      // Fallback to structured data
+      ['personal', 'experience', 'projects', 'skills', 'education', 'certifications'].forEach(section => {
+        if (careerData[section]) {
+          systemPrompt += `\n${section.toUpperCase()}:\n`;
+          const sectionText = typeof careerData[section] === 'string' ? 
+            careerData[section] : JSON.stringify(careerData[section]);
+          systemPrompt += sectionText + '\n';
+        }
+      });
+    }
 
     return systemPrompt;
   }
@@ -76,9 +83,56 @@ CAREER CONTEXT:\n`;
   // Generate response using Gemini API
   async generateResponse(userMessage, careerData) {
     try {
-      // Retrieve relevant context for RAG
-      const relevantContext = this.retrieveRelevantContext(userMessage, careerData);
-      const systemPrompt = this.createSystemPrompt(relevantContext);
+      console.log('🔍 Generating response for:', userMessage);
+      console.log('📂 Career data received:', typeof careerData, careerData ? Object.keys(careerData) : 'null');
+      
+      // Data size analysis
+      if (careerData) {
+        const fullDataText = careerData.raw || JSON.stringify(careerData);
+        console.log('📏 Full data size:', fullDataText.length, 'characters');
+        console.log('📊 Full data tokens (estimated):', Math.ceil(fullDataText.length / 4));
+        
+        console.log('📋 Individual sections:');
+        Object.keys(careerData).forEach(key => {
+          if (key !== 'raw' && key !== 'sections') {
+            if (careerData[key]) {
+              const sectionText = typeof careerData[key] === 'string' ? careerData[key] : JSON.stringify(careerData[key]);
+              console.log(`  ✅ ${key}:`, sectionText.length, 'chars,', Math.ceil(sectionText.length / 4), 'tokens');
+              
+              // Show education section content specifically for debugging
+              if (key === 'education') {
+                console.log(`      🎓 Education content preview:`, sectionText.substring(0, 200) + '...');
+              }
+            } else {
+              console.log(`  ❌ ${key}: NOT FOUND or EMPTY`);
+            }
+          }
+        });
+        
+        // Check if raw data contains education info
+        if (careerData.raw) {
+          const hasEducation = careerData.raw.toLowerCase().includes('education') || 
+                              careerData.raw.toLowerCase().includes('university') ||
+                              careerData.raw.toLowerCase().includes('master') ||
+                              careerData.raw.toLowerCase().includes('bachelor');
+          console.log('🔍 Raw data contains education keywords:', hasEducation);
+        }
+      }
+      
+      // Use full context instead of RAG
+      console.log('📄 Using complete career profile as context');
+      
+      const systemPrompt = this.createSystemPrompt(careerData);
+      console.log('📝 System prompt length:', systemPrompt.length, 'characters');
+      console.log('📊 Estimated tokens (rough):', Math.ceil(systemPrompt.length / 4));
+      
+      // System prompt logging (can be disabled in production)
+      if (CONFIG.CHATBOT_SETTINGS.debug) {
+        console.log('📄 FULL SYSTEM PROMPT:');
+        console.log('='.repeat(80));
+        console.log(systemPrompt);
+        console.log('='.repeat(80));
+      }
 
       // Prepare the conversation context
       const messages = [
@@ -106,13 +160,16 @@ CAREER CONTEXT:\n`;
         parts: [{ text: userMessage }]
       });
 
+      // Save conversation log after messages array is complete
+      this.saveConversationLog(userMessage, systemPrompt, messages);
+
       const requestBody = {
         contents: messages,
         generationConfig: {
           temperature: 0.7,
           topK: 40,
           topP: 0.95,
-          maxOutputTokens: 500,
+          maxOutputTokens: 2048,  // 충분히 증가
           stopSequences: []
         },
         safetySettings: [
@@ -137,6 +194,9 @@ CAREER CONTEXT:\n`;
 
       const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxc3ZlYWFocm1md2tveGhtcXZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0MTM4NzYsImV4cCI6MjA2ODk4OTg3Nn0.Ivsc4-KV_YFB7gOKXZDkITcZK9dVepjhprqXv-5Vk3U';
       
+      console.log('📡 Making request to:', this.supabaseUrl);
+      console.log('📦 Request body size:', JSON.stringify(requestBody).length, 'bytes');
+      
       const response = await fetch(this.supabaseUrl, {
         method: 'POST',
         headers: {
@@ -146,16 +206,24 @@ CAREER CONTEXT:\n`;
         body: JSON.stringify(requestBody)
       });
 
+      console.log('📊 Response status:', response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('❌ HTTP Error Response:', errorText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
       }
 
       const data = await response.json();
+      console.log('📋 Response data structure:', data ? Object.keys(data) : 'null');
+      console.log('🔍 Full response data:', JSON.stringify(data, null, 2));
       
       if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+        console.log('📝 Candidate content:', data.candidates[0].content);
         const aiResponse = data.candidates[0].content.parts[0].text;
+        console.log('💬 Extracted AI response:', aiResponse);
         
-        // Update conversation history
+        // Update conversation history (WITHOUT system prompt)
         this.conversationHistory.push(
           { role: 'user', content: userMessage },
           { role: 'model', content: aiResponse }
@@ -165,6 +233,9 @@ CAREER CONTEXT:\n`;
         if (this.conversationHistory.length > 10) {
           this.conversationHistory = this.conversationHistory.slice(-8);
         }
+
+        // Save response log
+        this.saveResponseLog(userMessage, aiResponse, data);
 
         return aiResponse;
       } else {
@@ -186,6 +257,81 @@ CAREER CONTEXT:\n`;
     ];
     
     return fallbacks[Math.floor(Math.random() * fallbacks.length)];
+  }
+
+  // Save conversation log to Supabase
+  async saveConversationLog(userMessage, systemPrompt, messages) {
+    try {
+      const logData = {
+        user_message: userMessage,
+        system_prompt_length: systemPrompt.length,
+        estimated_tokens: Math.ceil(systemPrompt.length / 4),
+        conversation_history_length: this.conversationHistory.length,
+        session_id: this.getSessionId(),
+        user_agent: navigator.userAgent,
+        referrer: document.referrer || null
+      };
+
+      // Don't await - fire and forget for performance
+      this.logToSupabase('chatbot_requests', logData);
+      
+    } catch (error) {
+      console.warn('📝 Failed to log request:', error);
+    }
+  }
+
+  // Save response log to Supabase
+  async saveResponseLog(userMessage, aiResponse, responseData) {
+    try {
+      const logData = {
+        user_message: userMessage,
+        ai_response: aiResponse,
+        response_length: aiResponse ? aiResponse.length : 0,
+        finish_reason: responseData?.candidates?.[0]?.finishReason || null,
+        prompt_tokens: responseData?.usageMetadata?.promptTokenCount || null,
+        total_tokens: responseData?.usageMetadata?.totalTokenCount || null,
+        session_id: this.getSessionId()
+      };
+
+      // Don't await - fire and forget for performance
+      this.logToSupabase('chatbot_responses', logData);
+      
+    } catch (error) {
+      console.warn('📝 Failed to log response:', error);
+    }
+  }
+
+  // Helper method to send logs to Supabase
+  async logToSupabase(tableName, data) {
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxc3ZlYWFocm1md2tveGhtcXZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM0MTM4NzYsImV4cCI6MjA2ODk4OTg3Nn0.Ivsc4-KV_YFB7gOKXZDkITcZK9dVepjhprqXv-5Vk3U';
+    
+    try {
+      const response = await fetch(`https://sqsveaahrmfwkoxhmqvj.supabase.co/rest/v1/${tableName}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'apikey': SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) {
+        console.warn('📝 Supabase log failed:', response.status);
+      }
+    } catch (error) {
+      console.warn('📝 Network error logging to Supabase:', error);
+    }
+  }
+
+  // Generate or get session ID for tracking user sessions
+  getSessionId() {
+    let sessionId = sessionStorage.getItem('chatbot_session_id');
+    if (!sessionId) {
+      sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('chatbot_session_id', sessionId);
+    }
+    return sessionId;
   }
 
   // Clear conversation history

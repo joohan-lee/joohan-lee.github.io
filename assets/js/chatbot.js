@@ -160,25 +160,43 @@ class CareerChatbot {
     try {
       let response;
       
+      console.log('🚀 Sending message:', message);
+      console.log('📡 Gemini service available:', !!this.geminiService);
+      console.log('🔧 Supabase configured:', isSupabaseConfigured());
+      
       // Use Gemini API if available, otherwise fall back to local search
       if (this.geminiService && isSupabaseConfigured()) {
         const contextData = this.dataLoader ? this.dataLoader.getContextForLLM() : (window.careerData || 'No data available');
+        console.log('📊 Context data type:', typeof contextData);
+        console.log('📊 Context data keys:', contextData && typeof contextData === 'object' ? Object.keys(contextData) : 'N/A');
+        
+        console.log('⏳ Calling gemini service...');
         response = await this.geminiService.generateResponse(message, contextData);
+        console.log('✅ Got response from gemini:', response ? 'SUCCESS' : 'EMPTY');
       } else {
+        console.log('🔄 Using local processing...');
         response = this.processMessageLocally(message);
       }
       
       this.hideTypingIndicator();
+      
+      if (!response || response.trim() === '') {
+        console.warn('⚠️ Empty response received, using fallback');
+        response = "I'm sorry, I didn't get a proper response. Could you try rephrasing your question?";
+      }
+      
       this.addMessage(response, 'bot');
       
     } catch (error) {
-      console.error('Error generating response:', error);
+      console.error('❌ Error generating response:', error);
+      console.error('❌ Error stack:', error.stack);
       this.hideTypingIndicator();
       
       const fallbackResponse = CONFIG.CHATBOT_SETTINGS.fallbackToLocal ? 
         this.processMessageLocally(message) :
         "I'm sorry, I'm having trouble responding right now. Please try again later.";
         
+      console.log('🔄 Using fallback response:', fallbackResponse);
       this.addMessage(fallbackResponse, 'bot');
     }
   }
