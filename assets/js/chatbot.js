@@ -7,13 +7,25 @@ class CareerChatbot {
     this.chatHistory = [];
     this.geminiService = null;
     this.isTyping = false;
+    this.dataLoader = null;
     this.init();
   }
 
-  init() {
-    // Initialize Gemini service if API key is configured
-    if (isApiKeyConfigured()) {
-      this.geminiService = new GeminiService(CONFIG.GEMINI_API_KEY);
+  async init() {
+    // Initialize markdown data loader
+    this.dataLoader = window.markdownDataLoader || new MarkdownDataLoader();
+    
+    try {
+      await this.dataLoader.loadPortfolioData();
+      console.log('Portfolio data loaded from markdown');
+    } catch (error) {
+      console.warn('Failed to load markdown data, falling back to JS data:', error);
+    }
+    
+    // Initialize Gemini service if Supabase is configured
+    if (isSupabaseConfigured()) {
+      console.debug("supabase configured")
+      this.geminiService = new GeminiService(CONFIG.SUPABASE_FUNCTION_URL);
     }
     
     this.createChatbotUI();
@@ -122,7 +134,7 @@ class CareerChatbot {
     this.addMessage(welcomeMessage, 'bot');
     
     // Add setup message if API key is not configured
-    if (!isApiKeyConfigured()) {
+    if (!isSupabaseConfigured()) {
       setTimeout(() => {
         const setupMessage = "⚠️ Note: I'm currently running in demo mode. To enable full AI capabilities, please configure your Gemini API key in the config.js file.";
         this.addMessage(setupMessage, 'bot');
@@ -148,24 +160,43 @@ class CareerChatbot {
     try {
       let response;
       
+      console.log('🚀 Sending message:', message);
+      console.log('📡 Gemini service available:', !!this.geminiService);
+      console.log('🔧 Supabase configured:', isSupabaseConfigured());
+      
       // Use Gemini API if available, otherwise fall back to local search
-      if (this.geminiService && isApiKeyConfigured()) {
-        response = await this.geminiService.generateResponse(message, careerData);
+      if (this.geminiService && isSupabaseConfigured()) {
+        const contextData = this.dataLoader ? this.dataLoader.getContextForLLM() : (window.careerData || 'No data available');
+        console.log('📊 Context data type:', typeof contextData);
+        console.log('📊 Context data keys:', contextData && typeof contextData === 'object' ? Object.keys(contextData) : 'N/A');
+        
+        console.log('⏳ Calling gemini service...');
+        response = await this.geminiService.generateResponse(message, contextData);
+        console.log('✅ Got response from gemini:', response ? 'SUCCESS' : 'EMPTY');
       } else {
+        console.log('🔄 Using local processing...');
         response = this.processMessageLocally(message);
       }
       
       this.hideTypingIndicator();
+      
+      if (!response || response.trim() === '') {
+        console.warn('⚠️ Empty response received, using fallback');
+        response = "I'm sorry, I didn't get a proper response. Could you try rephrasing your question?";
+      }
+      
       this.addMessage(response, 'bot');
       
     } catch (error) {
-      console.error('Error generating response:', error);
+      console.error('❌ Error generating response:', error);
+      console.error('❌ Error stack:', error.stack);
       this.hideTypingIndicator();
       
       const fallbackResponse = CONFIG.CHATBOT_SETTINGS.fallbackToLocal ? 
         this.processMessageLocally(message) :
         "I'm sorry, I'm having trouble responding right now. Please try again later.";
         
+      console.log('🔄 Using fallback response:', fallbackResponse);
       this.addMessage(fallbackResponse, 'bot');
     }
   }
@@ -223,7 +254,15 @@ class CareerChatbot {
   }
 
   processMessageLocally(message) {
-    const searchResults = searchCareerData(message);
+    let searchResults = [];
+    
+    // Try to use markdown data loader first
+    if (this.dataLoader) {
+      searchResults = this.dataLoader.searchPortfolioData(message);
+    } else if (typeof searchCareerData !== 'undefined') {
+      // Fallback to JS data
+      searchResults = searchCareerData(message);
+    }
     
     if (searchResults.length === 0) {
       return this.getGenericResponse(message);
