@@ -8,6 +8,10 @@ generated-content/
 # Dependencies
 node_modules/
 
+# macOS
+.DS_Store
+assets/.DS_Store
+
 # backup
 *.backup
 
