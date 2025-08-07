@@ -37,12 +37,7 @@ class MarkdownDataLoader {
     } catch (error) {
       console.error('Failed to load markdown portfolio data:', error);
       
-      // Fallback to JS data if markdown loading fails
-      if (typeof window !== 'undefined' && window.careerData) {
-        console.log('Falling back to JS careerData');
-        return this.convertJSDataToMarkdown(window.careerData);
-      }
-      
+      // No fallback needed - HTML is the primary data source
       throw error;
     }
   }
@@ -83,71 +78,6 @@ class MarkdownDataLoader {
     return sections;
   }
 
-  // Fallback method to convert JS data to markdown format
-  convertJSDataToMarkdown(jsData) {
-    let markdown = '';
-    
-    // Personal section
-    if (jsData.personal) {
-      markdown += `# ${jsData.personal.name}\n\n`;
-      markdown += `${jsData.personal.title}\n\n`;
-      if (jsData.personal.summary) {
-        markdown += `${jsData.personal.summary}\n\n`;
-      }
-    }
-    
-    // Experience section
-    if (jsData.experience && jsData.experience.length > 0) {
-      markdown += '# Professional Experience\n\n';
-      jsData.experience.forEach(exp => {
-        markdown += `## ${exp.position} at ${exp.company}\n`;
-        markdown += `**Duration**: ${exp.period}\n\n`;
-        markdown += `${exp.description}\n\n`;
-        
-        if (exp.achievements && exp.achievements.length > 0) {
-          markdown += '**Key Achievements:**\n';
-          exp.achievements.forEach(achievement => {
-            markdown += `- ${achievement}\n`;
-          });
-          markdown += '\n';
-        }
-        
-        if (exp.technologies && exp.technologies.length > 0) {
-          markdown += `**Technologies:** ${exp.technologies.join(', ')}\n\n`;
-        }
-      });
-    }
-    
-    // Projects section
-    if (jsData.projects && jsData.projects.length > 0) {
-      markdown += '# Portfolio Projects\n\n';
-      jsData.projects.forEach(project => {
-        markdown += `## ${project.name}\n\n`;
-        markdown += `${project.fullDescription || project.shortDescription}\n\n`;
-        
-        if (project.highlights && project.highlights.length > 0) {
-          markdown += '**Key Features:**\n';
-          project.highlights.forEach(highlight => {
-            markdown += `- ${highlight}\n`;
-          });
-          markdown += '\n';
-        }
-        
-        if (project.technologies && project.technologies.length > 0) {
-          markdown += `**Technologies:** ${project.technologies.join(', ')}\n\n`;
-        }
-      });
-    }
-    
-    return {
-      raw: markdown,
-      sections: this.parseMarkdownSections(markdown),
-      personal: markdown.includes('# Joohan Lee') ? markdown : '',
-      experience: markdown.includes('# Professional Experience') ? markdown : '',
-      projects: markdown.includes('# Portfolio Projects') ? markdown : '',
-      skills: ''
-    };
-  }
 
   // Search function compatible with existing chatbot
   searchPortfolioData(query) {

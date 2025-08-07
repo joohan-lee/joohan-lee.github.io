@@ -19,7 +19,7 @@ class CareerChatbot {
       await this.dataLoader.loadPortfolioData();
       console.log('Portfolio data loaded from markdown');
     } catch (error) {
-      console.warn('Failed to load markdown data, falling back to JS data:', error);
+      console.error('Failed to load markdown data:', error);
     }
     
     // Initialize Gemini service if Supabase is configured
@@ -166,7 +166,7 @@ class CareerChatbot {
       
       // Use Gemini API if available, otherwise fall back to local search
       if (this.geminiService && isSupabaseConfigured()) {
-        const contextData = this.dataLoader ? this.dataLoader.getContextForLLM() : (window.careerData || 'No data available');
+        const contextData = this.dataLoader ? this.dataLoader.getContextForLLM() : 'No data available';
         console.log('📊 Context data type:', typeof contextData);
         console.log('📊 Context data keys:', contextData && typeof contextData === 'object' ? Object.keys(contextData) : 'N/A');
         
@@ -206,16 +206,19 @@ class CareerChatbot {
     const messageElement = document.createElement('div');
     messageElement.className = `chatbot-message chatbot-message-${sender}`;
     
+    // Process markdown for bot responses only
+    const processedText = sender === 'bot' ? marked.parse(text) : text;
+    
     if (sender === 'bot') {
       messageElement.innerHTML = `
         <div class="message-avatar">
           <ion-icon name="person-outline"></ion-icon>
         </div>
-        <div class="message-content">${text}</div>
+        <div class="message-content markdown-content">${processedText}</div>
       `;
     } else {
       messageElement.innerHTML = `
-        <div class="message-content">${text}</div>
+        <div class="message-content">${processedText}</div>
       `;
     }
     

@@ -1,0 +1,148 @@
+/* Markdown rendering styles for chatbot messages */
+.markdown-content {
+  line-height: 1.6;
+}
+
+/* Headers */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-600);
+  margin: 0.8em 0 0.4em 0;
+  line-height: 1.3;
+}
+
+.markdown-content h1 { font-size: 1.2em; }
+.markdown-content h2 { font-size: 1.1em; }
+.markdown-content h3 { font-size: 1.05em; }
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 { font-size: 1em; }
+
+/* Paragraphs */
+.markdown-content p {
+  margin: 0.6em 0;
+}
+
+/* Lists */
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.6em 0;
+  padding-left: 1.5em;
+}
+
+.markdown-content ul li,
+.markdown-content ol li {
+  margin: 0.2em 0;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+}
+
+.markdown-content ul ul {
+  list-style-type: circle;
+  margin: 0.2em 0;
+}
+
+/* Strong and emphasis */
+.markdown-content strong {
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-600);
+}
+
+.markdown-content em {
+  font-style: italic;
+  color: var(--light-gray);
+}
+
+/* Code */
+.markdown-content code {
+  background: var(--eerie-black-2);
+  color: var(--orange-yellow-crayola);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--jet);
+}
+
+.markdown-content pre {
+  background: var(--eerie-black-2);
+  color: var(--light-gray);
+  padding: 1em;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0.8em 0;
+  border: 1px solid var(--jet);
+}
+
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+}
+
+/* Blockquotes */
+.markdown-content blockquote {
+  border-left: 3px solid var(--orange-yellow-crayola);
+  margin: 0.8em 0;
+  padding-left: 1em;
+  color: var(--light-gray-70);
+  font-style: italic;
+}
+
+/* Links */
+.markdown-content a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-1);
+}
+
+.markdown-content a:hover {
+  border-bottom-color: var(--orange-yellow-crayola);
+}
+
+/* Tables */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8em 0;
+  font-size: 0.9em;
+}
+
+.markdown-content table th,
+.markdown-content table td {
+  padding: 0.5em;
+  text-align: left;
+  border-bottom: 1px solid var(--jet);
+}
+
+.markdown-content table th {
+  background: var(--eerie-black-2);
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-500);
+}
+
+/* Horizontal rule */
+.markdown-content hr {
+  border: none;
+  height: 1px;
+  background: var(--jet);
+  margin: 1em 0;
+}
+
+/* Ensure proper spacing for first and last elements */
+.markdown-content > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-content > *:last-child {
+  margin-bottom: 0;
+}

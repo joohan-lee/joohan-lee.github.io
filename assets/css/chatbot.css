@@ -47,13 +47,13 @@
   font-weight: var(--fw-600);
 }
 
-/* Chatbot Container - 80% of viewport */
+/* Chatbot Container - 90% of viewport */
 .chatbot-container {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 80vw;
-  height: 80vh;
+  width: 90vw;
+  height: 90vh;
   background: var(--eerie-black-2);
   border: 1px solid var(--jet);
   border-radius: 20px;
@@ -319,8 +319,8 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .chatbot-container {
-    width: 90vw;
-    height: 85vh;
+    width: 95vw;
+    height: 90vh;
   }
   
   .chatbot-header {
@@ -370,8 +370,8 @@
 
 @media (max-width: 480px) {
   .chatbot-container {
-    width: 95vw;
-    height: 90vh;
+    width: 98vw;
+    height: 95vh;
   }
   
   .chatbot-header {
