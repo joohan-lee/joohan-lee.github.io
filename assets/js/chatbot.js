@@ -206,16 +206,19 @@ class CareerChatbot {
     const messageElement = document.createElement('div');
     messageElement.className = `chatbot-message chatbot-message-${sender}`;
     
+    // Process markdown for bot responses only
+    const processedText = sender === 'bot' ? marked.parse(text) : text;
+    
     if (sender === 'bot') {
       messageElement.innerHTML = `
         <div class="message-avatar">
           <ion-icon name="person-outline"></ion-icon>
         </div>
-        <div class="message-content">${text}</div>
+        <div class="message-content markdown-content">${processedText}</div>
       `;
     } else {
       messageElement.innerHTML = `
-        <div class="message-content">${text}</div>
+        <div class="message-content">${processedText}</div>
       `;
     }
     
