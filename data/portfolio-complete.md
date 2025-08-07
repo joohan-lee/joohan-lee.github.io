@@ -2,7 +2,7 @@
 name: "Joohan Lee"
 title: "Gen AI Software Engineer"
 email: "joohan224@gmail.com"
-extracted_date: "2025-08-07T06:52:45.432Z"
+extracted_date: "2025-08-07T06:55:57.715Z"
 ---
 
 
@@ -14,7 +14,7 @@ Gen AI Software Engineer
 
 ---
 type: "experience"
-extracted_date: "2025-08-07T06:52:45.439Z"
+extracted_date: "2025-08-07T06:55:57.724Z"
 ---
 
 # Professional Experience
@@ -104,7 +104,7 @@ Developed JSON standard interfaces and led multiple projects, gaining valuable e
 
 ---
 type: "projects"
-extracted_date: "2025-08-07T06:52:45.449Z"
+extracted_date: "2025-08-07T06:55:57.730Z"
 ---
 
 # Portfolio Projects
@@ -272,7 +272,7 @@ Implements a unique**HTML-first approach**where content is written once in HTML 
 
 ---
 type: "skills"
-extracted_date: "2025-08-07T06:52:45.457Z"
+extracted_date: "2025-08-07T06:55:57.735Z"
 ---
 
 # Technical Skills
@@ -298,7 +298,7 @@ Specialized Domains
 
 ---
 type: "education"
-extracted_date: "2025-08-07T06:52:45.461Z"
+extracted_date: "2025-08-07T06:55:57.738Z"
 ---
 
 # Education

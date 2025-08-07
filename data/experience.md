@@ -1,6 +1,6 @@
 ---
 type: "experience"
-extracted_date: "2025-08-07T06:52:45.439Z"
+extracted_date: "2025-08-07T06:55:57.724Z"
 ---
 
 # Professional Experience
