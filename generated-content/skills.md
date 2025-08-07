@@ -1,6 +1,6 @@
 ---
 type: "skills"
-extracted_date: "2025-08-07T06:21:07.582Z"
+extracted_date: "2025-08-07T06:41:49.641Z"
 ---
 
 # Technical Skills

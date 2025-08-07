@@ -1,6 +1,6 @@
 ---
 type: "education"
-extracted_date: "2025-08-07T06:21:07.584Z"
+extracted_date: "2025-08-07T06:41:49.644Z"
 ---
 
 # Education
