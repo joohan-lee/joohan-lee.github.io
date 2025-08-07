@@ -2,8 +2,7 @@
 .env.dev.js
 # .env.prod.js is created by GitHub Actions
 
-# Generated content (auto-extracted from HTML)
-generated-content/
+# Generated content is now tracked for deployment
 
 # Dependencies
 node_modules/
