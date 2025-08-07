@@ -256,7 +256,7 @@ extracted_date: "${new Date().toISOString()}"
 // CLI usage
 if (require.main === module) {
   const htmlPath = process.argv[2] || './index.html';
-  const outputDir = process.argv[3] || './generated-content';
+  const outputDir = process.argv[3] || './data';
   
   const extractor = new HTMLToMarkdownExtractor(htmlPath, outputDir);
   

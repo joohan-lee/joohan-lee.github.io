@@ -14,7 +14,7 @@ class MarkdownDataLoader {
 
     try {
       // Load the complete portfolio markdown file
-      const response = await fetch('./generated-content/portfolio-complete.md');
+      const response = await fetch('./data/portfolio-complete.md');
       if (!response.ok) {
         throw new Error(`Failed to load portfolio data: ${response.statusText}`);
       }
