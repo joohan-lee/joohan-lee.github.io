@@ -840,6 +840,47 @@ main {
   margin-bottom: 0;
 }
 
+/* Timeline achievements and technologies styling */
+.timeline-achievements,
+.timeline-technologies {
+  color: #d4d4d8;  /* Light gray that works on dark backgrounds */
+  margin-top: 15px;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+}
+
+.timeline-achievements strong,
+.timeline-technologies strong {
+  color: var(--vegas-gold);  
+  font-weight: var(--fw-500);
+}
+
+.timeline-achievements ul {
+  margin-top: 10px;
+  padding-left: 0;
+}
+
+.timeline-achievements li {
+  color: #d4d4d8;  /* Light gray for list items */
+  margin-bottom: 8px;
+  list-style: none;
+  position: relative;
+  padding-left: 15px;
+}
+
+.timeline-achievements li::before {
+  content: "•";
+  color: #fbbf24;  /* Bright yellow/orange for bullets */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.timeline-achievements li strong {
+  color: var(--vegas-gold);  
+}
+
 
 /**
  * skills 
