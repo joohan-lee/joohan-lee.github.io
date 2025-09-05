@@ -1,23 +1,21 @@
 ---
 type: "skills"
-extracted_date: "2025-08-07T06:52:06.395Z"
+extracted_date: "2025-09-05T03:32:31.477Z"
 ---
 
 # Technical Skills
 
 AI/ML & Deep Learning
-PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, Deep Learning, NLP, Computer Vision, Machine Learning, Vector Quantization, Noise-Robust Learning, Prompt Engineering, Multimodal AI Systems, RAG Pipelines, Agentic AI Tools
+PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, RAG(Retrieval Augemented Generation), Prompt Engineering, Agentic AI, Deep Learning, NLP, Computer Vision, Machine Learning,
 Programming Languages
-Python, JavaScript, TypeScript, C/C++, Java, SQL, HTML, CSS, VBA
+Python, JavaScript, TypeScript, C/C++, Java, SQL, HTML, CSS
 Backend & APIs
-Node.js, Express.js, Flask, RESTful APIs, Nginx, Gunicorn, Linux, MySQL, Prisma, WebSocket, Real-time Systems, API Integration
+Node.js, Express.js, Flask, RESTful APIs, Nginx, Gunicorn, Linux, MySQL, Prisma, WebSocket
 Frontend & UI
-React, Next.js, Angular, Electron, Bootstrap, Responsive Design, Modern CSS
+React, Next.js, Angular, Electron, Bootstrap
 Cloud & DevOps
-AWS (EC2, Lambda, Amplify, CloudFront, Route53), Docker, Linux, Git, CI/CD, HPC, Slurm
+AWS (EC2, Lambda, Amplify, CloudFront, Route53, Bedrock, VPC, S3), Docker, Linux, Git, CI/CD, HPC, Slurm
 Databases & Data Management
 MySQL, Milvus, Vector Databases, Database Design, Data Processing, ETL Pipelines
-Research & Academic
-MATLAB, Signal Processing, LaTeX, Scientific Computing, Research Methodologies, NumPy
-Specialized Domains
-5G/6G Communications, Physical Layer Communications, MIMO Systems, Channel Prediction, IoT Development, RPA, Enterprise Systems, ERP Systems, On-device AI
+Other Domains
+5G/6G Communications, Physical Layer Communications, MIMO Systems, Channel Prediction, IoT Development, RPA, Enterprise Systems, On-device AI, Finance

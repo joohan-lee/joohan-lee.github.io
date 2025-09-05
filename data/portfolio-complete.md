@@ -2,7 +2,7 @@
 name: "Joohan Lee"
 title: "Gen AI Software Engineer"
 email: "joohan224@gmail.com"
-extracted_date: "2025-08-07T06:52:06.387Z"
+extracted_date: "2025-09-05T03:32:31.470Z"
 ---
 
 
@@ -14,7 +14,7 @@ Gen AI Software Engineer
 
 ---
 type: "experience"
-extracted_date: "2025-08-07T06:52:06.390Z"
+extracted_date: "2025-09-05T03:32:31.472Z"
 ---
 
 # Professional Experience
@@ -26,11 +26,13 @@ extracted_date: "2025-08-07T06:52:06.390Z"
 #### Gen AI Software Engineer
 Oct 2024 — CurrentSamsung SDS America, Ridgefield Park, NJ
 Leading development of enterprise-scale generative AI applications, multimodal RAG pipelines, and LLM-powered analytics systems. Specializing in cutting-edge AI technologies for business solutions.
-**Key Achievements:**
+**Key Contributions:**
+- **Full-stack AI Integration:**Built AI applications with authentication, chatbot, document processing, and user management
 - **Multimodal RAG Pipeline:**Designed and implemented retrieval-augmented generation enhancing domain-specific information retrieval and generation performance
-- **LLM Analytics:**Developed sales data analyzer using Pandas and LangChain with prompt engineering and agentic tools
 - **Performance Improvement:**Achieved 20% improvement in response accuracy through advanced optimization techniques
-- **Enterprise Integration:**Built AI applications with authentication, chatbot, document processing, and user management
+- **Security Enhancement:**Identified and resolved 15+ security vulnerabilites in production AI application
+- **Cloud Deployment:**Deployed production applications using AWS EC2 with EBS, Application Load Balancer, Route53, S3, VPC, CloudWatch, Nginx, and Gunicorn
+- **Data Analytics:**Developed a sales data analyzer enabling users to analyze sales data with natural language using LLM, Pandas, and LangChain, incorporating prompt engineering and agentic tools
 **Technologies:**LangChain, HuggingFace, Milvus, AWS Bedrock, PyTorch, TensorFlow, Flask, React, Electron
 
 ## Full-Stack Developer at USP Management, Inc
@@ -67,7 +69,7 @@ Conducted cutting-edge research in AI communications and machine learning, devel
 #### Software Engineer Intern
 May 2023 — Jul 2023CyClean, Inc, Los Angeles, CA (Remote)
 Developed RESTful APIs and dynamic web applications for IoT products, gaining hands-on experience with cloud deployment and modern web technologies.
-**Key Projects:**
+**Key Contributions:**
 - **API Development:**Implemented RESTful APIs for customer information and quotes about IoT products using AWS Lambda
 - **Web Application:**Developed dynamic website utilizing React and TypeScript
 - **Cloud Deployment:**Deployed applications using AWS Amplify, CloudFront, and Route53
@@ -80,7 +82,7 @@ Developed RESTful APIs and dynamic web applications for IoT products, gaining ha
 #### Research Intern
 May 2022 — Apr 2023Purdue University, Los Angeles, CA (Remote)
 Contributed to software entity recognition research, developing WikiSER dataset and noise-robust learning approaches for NLP applications.
-**Research Impact:**
+**Research Contributions:**
 - **WikiSER Dataset:**Developed high-quality dataset of 1.7M sentences with 79K labeled software entities
 - **Noise-Robust Learning:**Implemented self-regularization approach achieving 7.1% F1 score improvement
 - **Error Reduction:**Achieved 8.62% reduction in error rate compared to existing benchmarks
@@ -93,7 +95,7 @@ Contributed to software entity recognition research, developing WikiSER dataset 
 #### Software Engineer
 Jul 2020 — Jul 2021BSG One, Seoul, South Korea
 Developed JSON standard interfaces and led multiple projects, gaining valuable experience in software development and cross-functional team collaboration.
-**Professional Development:**
+**Key Contributions:**
 - **Interface Development:**Developed JSON standard interface for BrityRPA using JavaScript
 - **Productivity Improvement:**Increased development productivity by up to 30%
 - **Project Leadership:**Led 6 projects end-to-end with excellent client communication
@@ -104,7 +106,7 @@ Developed JSON standard interfaces and led multiple projects, gaining valuable e
 
 ---
 type: "projects"
-extracted_date: "2025-08-07T06:52:06.393Z"
+extracted_date: "2025-09-05T03:32:31.476Z"
 ---
 
 # Portfolio Projects
@@ -272,33 +274,31 @@ Implements a unique**HTML-first approach**where content is written once in HTML 
 
 ---
 type: "skills"
-extracted_date: "2025-08-07T06:52:06.395Z"
+extracted_date: "2025-09-05T03:32:31.477Z"
 ---
 
 # Technical Skills
 
 AI/ML & Deep Learning
-PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, Deep Learning, NLP, Computer Vision, Machine Learning, Vector Quantization, Noise-Robust Learning, Prompt Engineering, Multimodal AI Systems, RAG Pipelines, Agentic AI Tools
+PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, RAG(Retrieval Augemented Generation), Prompt Engineering, Agentic AI, Deep Learning, NLP, Computer Vision, Machine Learning,
 Programming Languages
-Python, JavaScript, TypeScript, C/C++, Java, SQL, HTML, CSS, VBA
+Python, JavaScript, TypeScript, C/C++, Java, SQL, HTML, CSS
 Backend & APIs
-Node.js, Express.js, Flask, RESTful APIs, Nginx, Gunicorn, Linux, MySQL, Prisma, WebSocket, Real-time Systems, API Integration
+Node.js, Express.js, Flask, RESTful APIs, Nginx, Gunicorn, Linux, MySQL, Prisma, WebSocket
 Frontend & UI
-React, Next.js, Angular, Electron, Bootstrap, Responsive Design, Modern CSS
+React, Next.js, Angular, Electron, Bootstrap
 Cloud & DevOps
-AWS (EC2, Lambda, Amplify, CloudFront, Route53), Docker, Linux, Git, CI/CD, HPC, Slurm
+AWS (EC2, Lambda, Amplify, CloudFront, Route53, Bedrock, VPC, S3), Docker, Linux, Git, CI/CD, HPC, Slurm
 Databases & Data Management
 MySQL, Milvus, Vector Databases, Database Design, Data Processing, ETL Pipelines
-Research & Academic
-MATLAB, Signal Processing, LaTeX, Scientific Computing, Research Methodologies, NumPy
-Specialized Domains
-5G/6G Communications, Physical Layer Communications, MIMO Systems, Channel Prediction, IoT Development, RPA, Enterprise Systems, ERP Systems, On-device AI
+Other Domains
+5G/6G Communications, Physical Layer Communications, MIMO Systems, Channel Prediction, IoT Development, RPA, Enterprise Systems, On-device AI, Finance
 
 ---
 
 ---
 type: "education"
-extracted_date: "2025-08-07T06:52:06.395Z"
+extracted_date: "2025-09-05T03:32:31.478Z"
 ---
 
 # Education

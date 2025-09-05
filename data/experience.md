@@ -1,6 +1,6 @@
 ---
 type: "experience"
-extracted_date: "2025-08-07T06:52:06.390Z"
+extracted_date: "2025-09-05T03:32:31.472Z"
 ---
 
 # Professional Experience
@@ -12,11 +12,13 @@ extracted_date: "2025-08-07T06:52:06.390Z"
 #### Gen AI Software Engineer
 Oct 2024 — CurrentSamsung SDS America, Ridgefield Park, NJ
 Leading development of enterprise-scale generative AI applications, multimodal RAG pipelines, and LLM-powered analytics systems. Specializing in cutting-edge AI technologies for business solutions.
-**Key Achievements:**
+**Key Contributions:**
+- **Full-stack AI Integration:**Built AI applications with authentication, chatbot, document processing, and user management
 - **Multimodal RAG Pipeline:**Designed and implemented retrieval-augmented generation enhancing domain-specific information retrieval and generation performance
-- **LLM Analytics:**Developed sales data analyzer using Pandas and LangChain with prompt engineering and agentic tools
 - **Performance Improvement:**Achieved 20% improvement in response accuracy through advanced optimization techniques
-- **Enterprise Integration:**Built AI applications with authentication, chatbot, document processing, and user management
+- **Security Enhancement:**Identified and resolved 15+ security vulnerabilites in production AI application
+- **Cloud Deployment:**Deployed production applications using AWS EC2 with EBS, Application Load Balancer, Route53, S3, VPC, CloudWatch, Nginx, and Gunicorn
+- **Data Analytics:**Developed a sales data analyzer enabling users to analyze sales data with natural language using LLM, Pandas, and LangChain, incorporating prompt engineering and agentic tools
 **Technologies:**LangChain, HuggingFace, Milvus, AWS Bedrock, PyTorch, TensorFlow, Flask, React, Electron
 
 ## Full-Stack Developer at USP Management, Inc
@@ -53,7 +55,7 @@ Conducted cutting-edge research in AI communications and machine learning, devel
 #### Software Engineer Intern
 May 2023 — Jul 2023CyClean, Inc, Los Angeles, CA (Remote)
 Developed RESTful APIs and dynamic web applications for IoT products, gaining hands-on experience with cloud deployment and modern web technologies.
-**Key Projects:**
+**Key Contributions:**
 - **API Development:**Implemented RESTful APIs for customer information and quotes about IoT products using AWS Lambda
 - **Web Application:**Developed dynamic website utilizing React and TypeScript
 - **Cloud Deployment:**Deployed applications using AWS Amplify, CloudFront, and Route53
@@ -66,7 +68,7 @@ Developed RESTful APIs and dynamic web applications for IoT products, gaining ha
 #### Research Intern
 May 2022 — Apr 2023Purdue University, Los Angeles, CA (Remote)
 Contributed to software entity recognition research, developing WikiSER dataset and noise-robust learning approaches for NLP applications.
-**Research Impact:**
+**Research Contributions:**
 - **WikiSER Dataset:**Developed high-quality dataset of 1.7M sentences with 79K labeled software entities
 - **Noise-Robust Learning:**Implemented self-regularization approach achieving 7.1% F1 score improvement
 - **Error Reduction:**Achieved 8.62% reduction in error rate compared to existing benchmarks
@@ -79,7 +81,7 @@ Contributed to software entity recognition research, developing WikiSER dataset 
 #### Software Engineer
 Jul 2020 — Jul 2021BSG One, Seoul, South Korea
 Developed JSON standard interfaces and led multiple projects, gaining valuable experience in software development and cross-functional team collaboration.
-**Professional Development:**
+**Key Contributions:**
 - **Interface Development:**Developed JSON standard interface for BrityRPA using JavaScript
 - **Productivity Improvement:**Increased development productivity by up to 30%
 - **Project Leadership:**Led 6 projects end-to-end with excellent client communication
