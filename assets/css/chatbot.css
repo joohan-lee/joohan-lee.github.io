@@ -150,7 +150,7 @@
 }
 
 .chatbot-message-user .message-content {
-  background: var(--bg-gradient-yellow-1);
+  background: hsl(45, 100%, 71%);
   color: var(--smoky-black);
   max-width: 80%;
 }

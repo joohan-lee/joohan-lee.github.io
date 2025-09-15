@@ -2,7 +2,7 @@
 name: "Joohan Lee"
 title: "Gen AI Software Engineer"
 email: "joohan224@gmail.com"
-extracted_date: "2025-09-12T04:29:51.717Z"
+extracted_date: "2025-09-15T04:42:39.778Z"
 ---
 
 
@@ -14,7 +14,7 @@ Gen AI Software Engineer
 
 ---
 type: "experience"
-extracted_date: "2025-09-12T04:29:51.719Z"
+extracted_date: "2025-09-15T04:42:39.781Z"
 ---
 
 # Professional Experience
@@ -106,7 +106,7 @@ Developed JSON standard interfaces and led multiple projects, gaining valuable e
 
 ---
 type: "projects"
-extracted_date: "2025-09-12T04:29:51.721Z"
+extracted_date: "2025-09-15T04:42:39.784Z"
 ---
 
 # Portfolio Projects
@@ -231,6 +231,35 @@ Developed novel**Vector Quantization-based Variational Autoencoder approaches**f
 Published in**IEEE Transactions on Wireless Communications**and contributed to**1st place victory**in IEEE ICASSP Signal Processing Grand Challenges, demonstrating the practical impact of the research.
 ](https://arxiv.org/abs/2411.16971)
 
+## Intelligent Video Analysis & Interactive Player
+**Technologies**: Python,PyQt6,Video Processing,Image Processing,OpenCV,NumPy,GUI Development,Multimedia Systems
+
+[
+### Intelligent Video Analysis & Interactive Player
+
+Research (Multimedia Systems)
+
+Developed a**sophisticated multimedia system**that automatically extracts hierarchical structure from video content and provides interactive navigation through an intelligent media player, combining video processing, image analysis, and professional GUI development.
+
+#### Advanced Video & Image Processing
+
+- **Automatic Shot Detection:**Mean Absolute Difference (MAD) algorithm for detecting camera cuts and transitions
+- **Scene Segmentation:**Multi-modal approach using color histograms and HOG features with cosine similarity for semantic grouping
+- **Audio-based Subshot Analysis:**Short Time Fourier Transform (STFT) of audio signals to detect mood and emotional changes
+- **Hierarchical Content Organization:**Three-level structure (Scene → Shot → Subshot) with temporal indexing
+
+#### Interactive Multimedia Player
+
+- **Professional GUI:**PyQt6-based interface with hierarchical content navigation and real-time video display
+- **Synchronized Playback:**Multi-threaded architecture ensuring perfect audio-video synchronization
+- **Interactive Navigation:**Click-to-jump functionality with real-time segment highlighting and playback control
+- **Raw Data Processing:**Direct RGB/WAV file handling with optimized binary operations
+
+#### Technical Excellence
+
+Demonstrates mastery of**multimedia systems engineering**, combining video/image processing algorithms, real-time systems programming, and professional GUI development. Successfully handles the complete pipeline from low-level media analysis to high-level user interaction.
+](https://github.com/zldzksk1/USC-CSCI-576-Multimedia-and-System)
+
 ## WikiSER: Software Entity Recognition
 **Technologies**: Python,NLP,Machine Learning,Data Processing
 
@@ -353,35 +382,12 @@ Developed a**multi-server meeting scheduling system**using C socket programming,
 Demonstrates mastery of**systems programming in C**, including socket APIs, process management, memory handling, and protocol design. Features robust error handling, timeout management, and clean resource cleanup, showcasing production-ready networking code architecture.
 ](https://github.com/joohan-lee/socket-programming-meeting-scheduling)
 
-## AI-Powered Portfolio Website
-**Technologies**: HTML,CSS,JavaScript,AI Integration
-
-[
-### AI-Powered Portfolio Website
-
-Web Development
-
-This portfolio website integrates**AI chatbot capabilities**with modern web design, featuring intelligent content extraction and RAG-based question answering about professional experience.
-
-#### Innovative Features
-
-- Responsive modern design with smooth animations
-- Integrated AI chatbot for interactive experience
-- Content extraction system for LLM training data
-- RAG pipeline for contextual Q&A about experience
-- Single source of truth content management
-
-#### Technical Innovation
-
-Implements a unique**HTML-first approach**where content is written once in HTML and automatically extracted to markdown for AI training, eliminating content synchronization issues.
-](#)
-
 
 ---
 
 ---
 type: "skills"
-extracted_date: "2025-09-12T04:29:51.723Z"
+extracted_date: "2025-09-15T04:42:39.786Z"
 ---
 
 # Technical Skills
@@ -405,7 +411,7 @@ Other Domains
 
 ---
 type: "education"
-extracted_date: "2025-09-12T04:29:51.724Z"
+extracted_date: "2025-09-15T04:42:39.787Z"
 ---
 
 # Education
@@ -415,12 +421,12 @@ extracted_date: "2025-09-12T04:29:51.724Z"
 
 
 #### University of Southern California
-Jan 2022 — Dec 2023Master of Science in Computer Science(3.71/4.0)
+Jan 2022 — Dec 2023Master of Science in Computer Science
 
 ## Yonsei University at Yonsei University
 **Duration**: Mar 2015 — Feb 2021
 
 
 #### Yonsei University
-Mar 2015 — Feb 2021Bachelor of Engineering in Computer Engineering(3.97/4.3)
+Mar 2015 — Feb 2021Bachelor of Engineering in Computer Engineering
 
