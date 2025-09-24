@@ -69,6 +69,9 @@ class CareerChatbot {
       <button class="chatbot-toggle-btn" id="chatbot-toggle-btn">
         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
         <span class="chatbot-notification">1</span>
+        <div class="chatbot-speech-bubble" id="chatbot-speech-bubble">
+          Hi! Ask me about Joohan!
+        </div>
       </button>
     `;
 
@@ -113,26 +116,40 @@ class CareerChatbot {
     const container = document.getElementById('chatbot-container');
     const toggleBtn = document.getElementById('chatbot-toggle-btn');
     const notification = toggleBtn.querySelector('.chatbot-notification');
-    
+    const speechBubble = document.getElementById('chatbot-speech-bubble');
+
     this.isOpen = !this.isOpen;
     container.classList.toggle('active', this.isOpen);
-    
+
     if (this.isOpen) {
       notification.style.display = 'none';
+      speechBubble.style.display = 'none';
       document.getElementById('chatbot-input').focus();
+    } else {
+      // Show speech bubble again when closed
+      setTimeout(() => {
+        if (speechBubble) speechBubble.style.display = 'block';
+      }, 300);
     }
   }
 
   closeChatbot() {
     const container = document.getElementById('chatbot-container');
+    const speechBubble = document.getElementById('chatbot-speech-bubble');
+
     this.isOpen = false;
     container.classList.remove('active');
+
+    // Show speech bubble again when closed
+    setTimeout(() => {
+      if (speechBubble) speechBubble.style.display = 'block';
+    }, 300);
   }
 
   addWelcomeMessage() {
     const welcomeMessage = getRandomWelcomeMessage();
     this.addMessage(welcomeMessage, 'bot');
-    
+
     // Add setup message if API key is not configured
     if (!isSupabaseConfigured()) {
       setTimeout(() => {
@@ -140,6 +157,20 @@ class CareerChatbot {
         this.addMessage(setupMessage, 'bot');
       }, 1000);
     }
+
+    // Hide speech bubble after 1 minute
+    setTimeout(() => {
+      const speechBubble = document.getElementById('chatbot-speech-bubble');
+      if (speechBubble && !this.isOpen) {
+        speechBubble.style.opacity = '0';
+        speechBubble.style.transform = 'translateX(-50%) scale(0.8)';
+        setTimeout(() => {
+          if (speechBubble && !this.isOpen) {
+            speechBubble.style.display = 'none';
+          }
+        }, 300);
+      }
+    }, 60000);
   }
 
   async sendMessage(messageText = null) {

@@ -9,7 +9,7 @@
   right: 30px;
   width: 60px;
   height: 60px;
-  background: var(--bg-gradient-yellow-1);
+  background: hsl(45, 100%, 72%);
   border: none;
   border-radius: 50%;
   box-shadow: var(--shadow-2);
@@ -23,7 +23,8 @@
 
 .chatbot-toggle-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 25px hsla(45, 100%, 72%, 0.3);
+  background: hsl(45, 100%, 75%);
+  box-shadow: 0 8px 25px hsla(45, 100%, 72%, 0.4);
 }
 
 .chatbot-toggle-btn ion-icon {
@@ -45,6 +46,36 @@
   align-items: center;
   justify-content: center;
   font-weight: var(--fw-600);
+}
+
+/* Speech Bubble */
+.chatbot-speech-bubble {
+  position: absolute;
+  top: -60px;
+  right: -5px;
+  transform: translateX(0);
+  background: var(--bg-gradient-yellow-1);
+  color: var(--white-1);
+  padding: 10px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: var(--fw-500);
+  white-space: nowrap;
+  box-shadow: 0 4px 15px hsla(45, 100%, 72%, 0.3);
+  animation: speechBubbleBounce 2s ease-in-out infinite;
+  z-index: 1001;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.chatbot-speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 25px;
+  transform: translateX(0);
+  border: 8px solid transparent;
+  border-top-color: hsl(45, 100%, 71%);
 }
 
 /* Chatbot Container - 90% of viewport */
@@ -305,6 +336,15 @@
   }
 }
 
+@keyframes speechBubbleBounce {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(0) translateY(-5px);
+  }
+}
+
 /* Disabled state for send button when typing */
 #chatbot-send-btn:disabled {
   opacity: 0.5;
@@ -318,6 +358,16 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .chatbot-speech-bubble {
+    font-size: 12px;
+    padding: 8px 12px;
+    top: -55px;
+  }
+
+  .chatbot-speech-bubble::after {
+    border-width: 6px;
+  }
+
   .chatbot-container {
     width: 95vw;
     height: 90vh;
