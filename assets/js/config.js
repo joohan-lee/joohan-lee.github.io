@@ -26,9 +26,9 @@ const CONFIG = {
   
   // Welcome messages
   WELCOME_MESSAGES: [
-    "Hi! I'm Joohan's AI career assistant. Ask me anything about his background, skills, or experience! 🚀",
-    "Hello! I can help you learn about Joohan's professional journey. What would you like to know? 💼",
-    "Welcome! I'm here to share insights about Joohan's career and expertise. How can I help? ✨"
+    "Hi! I'm Joohan's AI career assistant. Ask me anything about his background, skills, or experience!",
+    "Hello! I can help you learn about Joohan's professional journey. What would you like to know?",
+    "Welcome! I'm here to share insights about Joohan's career and expertise. How can I help?"
   ],
   
   // Quick suggestion prompts
