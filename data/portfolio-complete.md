@@ -2,7 +2,7 @@
 name: "Joohan Lee"
 title: "Gen AI Software Engineer"
 email: "joohan224@gmail.com"
-extracted_date: "2025-09-15T04:42:39.778Z"
+extracted_date: "2025-10-07T03:47:13.276Z"
 ---
 
 
@@ -14,7 +14,7 @@ Gen AI Software Engineer
 
 ---
 type: "experience"
-extracted_date: "2025-09-15T04:42:39.781Z"
+extracted_date: "2025-10-07T03:47:13.280Z"
 ---
 
 # Professional Experience
@@ -60,7 +60,7 @@ Conducted cutting-edge research in AI communications and machine learning, devel
 - **Vector Quantization:**Applied VQ techniques achieving 10% noise-robustness improvement and 50% compression
 - **ML Pipeline Development:**Created diverse ML pipelines using PyTorch and TensorFlow improving model accuracy by 18%
 - **Publications:**Multiple IEEE papers published in prestigious venues
-**Technologies:**PyTorch, TensorFlow, Python, NumPy, Linux, Slurm, HPC, MATLAB
+**Technologies:**PyTorch, TensorFlow, Python, NumPy, Linux, Slurm, HPC
 
 ## Software Engineer Intern at CyClean, Inc
 **Duration**: May 2023 — Jul 2023
@@ -106,7 +106,7 @@ Developed JSON standard interfaces and led multiple projects, gaining valuable e
 
 ---
 type: "projects"
-extracted_date: "2025-09-15T04:42:39.784Z"
+extracted_date: "2025-10-07T03:47:13.282Z"
 ---
 
 # Portfolio Projects
@@ -387,7 +387,7 @@ Demonstrates mastery of**systems programming in C**, including socket APIs, proc
 
 ---
 type: "skills"
-extracted_date: "2025-09-15T04:42:39.786Z"
+extracted_date: "2025-10-07T03:47:13.284Z"
 ---
 
 # Technical Skills
@@ -402,6 +402,8 @@ Frontend & UI
 React, Next.js, Angular, Electron, Bootstrap
 Cloud & DevOps
 AWS (EC2, Lambda, Amplify, CloudFront, Route53, Bedrock, VPC, S3), Docker, Linux, Git, CI/CD, HPC, Slurm
+Computer Networking
+TCP/IP, UDP, OSPF, BGP, Network Protocols, Socket Programming, Routing Algorithms, Network Security, DNS, DHCP, NAT, VPN
 Databases & Data Management
 MySQL, Milvus, Vector Databases, Database Design, Data Processing, ETL Pipelines
 Other Domains
@@ -411,7 +413,7 @@ Other Domains
 
 ---
 type: "education"
-extracted_date: "2025-09-15T04:42:39.787Z"
+extracted_date: "2025-10-07T03:47:13.285Z"
 ---
 
 # Education

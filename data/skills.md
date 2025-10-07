@@ -1,6 +1,6 @@
 ---
 type: "skills"
-extracted_date: "2025-09-15T04:42:39.786Z"
+extracted_date: "2025-10-07T03:47:13.284Z"
 ---
 
 # Technical Skills
@@ -15,6 +15,8 @@ Frontend & UI
 React, Next.js, Angular, Electron, Bootstrap
 Cloud & DevOps
 AWS (EC2, Lambda, Amplify, CloudFront, Route53, Bedrock, VPC, S3), Docker, Linux, Git, CI/CD, HPC, Slurm
+Computer Networking
+TCP/IP, UDP, OSPF, BGP, Network Protocols, Socket Programming, Routing Algorithms, Network Security, DNS, DHCP, NAT, VPN
 Databases & Data Management
 MySQL, Milvus, Vector Databases, Database Design, Data Processing, ETL Pipelines
 Other Domains

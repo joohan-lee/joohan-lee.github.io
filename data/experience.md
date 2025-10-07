@@ -1,6 +1,6 @@
 ---
 type: "experience"
-extracted_date: "2025-09-15T04:42:39.781Z"
+extracted_date: "2025-10-07T03:47:13.280Z"
 ---
 
 # Professional Experience
@@ -46,7 +46,7 @@ Conducted cutting-edge research in AI communications and machine learning, devel
 - **Vector Quantization:**Applied VQ techniques achieving 10% noise-robustness improvement and 50% compression
 - **ML Pipeline Development:**Created diverse ML pipelines using PyTorch and TensorFlow improving model accuracy by 18%
 - **Publications:**Multiple IEEE papers published in prestigious venues
-**Technologies:**PyTorch, TensorFlow, Python, NumPy, Linux, Slurm, HPC, MATLAB
+**Technologies:**PyTorch, TensorFlow, Python, NumPy, Linux, Slurm, HPC
 
 ## Software Engineer Intern at CyClean, Inc
 **Duration**: May 2023 — Jul 2023
