@@ -3,7 +3,8 @@
 // AI-powered career chatbot with RAG functionality
 class CareerChatbot {
   constructor() {
-    this.isOpen = false;
+    this.isOpen = true; // Start opened by default
+    this.isMaximized = false; // Start in normal mode (not maximized)
     this.chatHistory = [];
     this.geminiService = null;
     this.isTyping = false;
@@ -36,24 +37,29 @@ class CareerChatbot {
   createChatbotUI() {
     // Create chatbot HTML structure
     const chatbotHTML = `
-      <div class="chatbot-container" id="chatbot-container">
+      <div class="chatbot-container active" id="chatbot-container">
         <div class="chatbot-header">
           <div class="chatbot-title">
             <ion-icon name="chatbubble-outline"></ion-icon>
             <span>Ask about my career</span>
           </div>
-          <button class="chatbot-close-btn" id="chatbot-close-btn">
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
+          <div class="chatbot-header-actions">
+            <button class="chatbot-maximize-btn" id="chatbot-maximize-btn" title="Maximize">
+              <ion-icon name="expand-outline"></ion-icon>
+            </button>
+            <button class="chatbot-close-btn" id="chatbot-close-btn" title="Close">
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
         </div>
-        
+
         <div class="chatbot-messages" id="chatbot-messages">
           <!-- Messages will be added here dynamically -->
         </div>
-        
+
         <div class="chatbot-input-area">
           <div class="chatbot-suggestions">
-            ${CONFIG.QUICK_SUGGESTIONS.map(suggestion => 
+            ${CONFIG.QUICK_SUGGESTIONS.map(suggestion =>
               `<button class="suggestion-btn" data-suggestion="${suggestion.prompt}">${suggestion.text}</button>`
             ).join('')}
           </div>
@@ -65,8 +71,8 @@ class CareerChatbot {
           </div>
         </div>
       </div>
-      
-      <button class="chatbot-toggle-btn" id="chatbot-toggle-btn">
+
+      <button class="chatbot-toggle-btn hidden" id="chatbot-toggle-btn">
         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
         <span class="chatbot-notification">1</span>
         <div class="chatbot-speech-bubble" id="chatbot-speech-bubble">
@@ -82,13 +88,21 @@ class CareerChatbot {
   attachEventListeners() {
     const toggleBtn = document.getElementById('chatbot-toggle-btn');
     const closeBtn = document.getElementById('chatbot-close-btn');
+    const maximizeBtn = document.getElementById('chatbot-maximize-btn');
     const sendBtn = document.getElementById('chatbot-send-btn');
     const input = document.getElementById('chatbot-input');
     const container = document.getElementById('chatbot-container');
 
     // Toggle chatbot
     toggleBtn.addEventListener('click', () => this.toggleChatbot());
-    closeBtn.addEventListener('click', () => this.closeChatbot());
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.closeChatbot();
+    });
+    maximizeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.toggleMaximize();
+    });
 
     // Send message
     sendBtn.addEventListener('click', () => this.sendMessage());
@@ -119,13 +133,16 @@ class CareerChatbot {
     const speechBubble = document.getElementById('chatbot-speech-bubble');
 
     this.isOpen = !this.isOpen;
-    container.classList.toggle('active', this.isOpen);
 
     if (this.isOpen) {
+      container.classList.add('active');
+      toggleBtn.classList.add('hidden'); // Hide toggle button when chatbot is open
       notification.style.display = 'none';
       speechBubble.style.display = 'none';
       document.getElementById('chatbot-input').focus();
     } else {
+      container.classList.remove('active');
+      toggleBtn.classList.remove('hidden'); // Show toggle button when chatbot is closed
       // Show speech bubble again when closed
       setTimeout(() => {
         if (speechBubble) speechBubble.style.display = 'block';
@@ -133,12 +150,39 @@ class CareerChatbot {
     }
   }
 
+  toggleMaximize() {
+    const container = document.getElementById('chatbot-container');
+    const maximizeBtn = document.getElementById('chatbot-maximize-btn');
+    const icon = maximizeBtn.querySelector('ion-icon');
+
+    this.isMaximized = !this.isMaximized;
+    container.classList.toggle('maximized', this.isMaximized);
+
+    // Update icon and title
+    if (this.isMaximized) {
+      icon.setAttribute('name', 'contract-outline');
+      maximizeBtn.setAttribute('title', 'Restore');
+    } else {
+      icon.setAttribute('name', 'expand-outline');
+      maximizeBtn.setAttribute('title', 'Maximize');
+    }
+  }
+
   closeChatbot() {
     const container = document.getElementById('chatbot-container');
+    const toggleBtn = document.getElementById('chatbot-toggle-btn');
+    const maximizeBtn = document.getElementById('chatbot-maximize-btn');
     const speechBubble = document.getElementById('chatbot-speech-bubble');
+    const icon = maximizeBtn.querySelector('ion-icon');
 
     this.isOpen = false;
-    container.classList.remove('active');
+    this.isMaximized = false;
+    container.classList.remove('active', 'maximized');
+    toggleBtn.classList.remove('hidden'); // Show toggle button when chatbot is closed
+
+    // Reset maximize button to default state
+    icon.setAttribute('name', 'expand-outline');
+    maximizeBtn.setAttribute('title', 'Maximize');
 
     // Show speech bubble again when closed
     setTimeout(() => {
