@@ -117,7 +117,7 @@ npm run build            # Full build process
 
 ## 🤖 AI Chatbot Setup
 
-### 1. **Supabase Configuration (Already Set Up)**
+### 1. **Supabase Configuration **
 The chatbot uses Supabase Edge Functions as a proxy to Gemini API. The configuration is already set up:
 
 ```javascript
@@ -302,30 +302,6 @@ jobs:
         rsync -r . server:/var/www/portfolio/
 ```
 
-## 🆘 Troubleshooting
-
-### **Chatbot Shows "Demo Mode"**
-- Check if your Supabase function URL is configured in `config.js`
-- Verify the Supabase Edge Function is deployed and accessible
-- Check browser console for API connection errors
-
-### **Content Not Updating in AI**
-- Run `npm run extract` after making HTML changes
-- Check that your HTML has proper `data-extract` attributes
-- Verify `generated-content/` directory is being created
-
-### **Portfolio Appears Static**
-- Ensure you're not overriding HTML content with JavaScript
-- Check browser console for errors
-- Verify all assets are loading correctly
-
-### **Extraction Not Working**
-- Install dependencies: `npm install`
-- Check Node.js version (requires Node 14+)
-- Verify `build-scripts/html-to-markdown.js` exists
-
-## 🎉 What You Get
-
 ### **Professional Portfolio**
 - ✅ **Modern, responsive design** that works on all devices
 - ✅ **SEO-optimized HTML** with proper semantic structure
@@ -344,28 +320,11 @@ jobs:
 - ✅ **Clean, documented codebase** for easy customization
 - ✅ **Automated build processes** for seamless deployment
 
-## 📊 Performance & Analytics
-
-- **Lighthouse Score**: 95+ (Performance, Accessibility, SEO)
-- **Mobile Responsive**: Tested on all major devices
-- **Load Time**: < 2 seconds on 3G networks
-- **AI Response Time**: < 3 seconds with Gemini API
-
 ## 📄 License
 
-MIT License - feel free to use this for your own portfolio!
+MIT License
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit issues and pull requests.
 
----
-
-**🎯 Ready to build your AI-powered portfolio?**
-
-1. Clone this repository
-2. Add your content to `index.html`
-3. Run `npm run extract && npm start`
-4. Deploy and impress your visitors with an AI that knows your career inside out!
-
-Your portfolio will stand out with this unique combination of professional design and intelligent AI interaction. 🚀
