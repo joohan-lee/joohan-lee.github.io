@@ -114,6 +114,17 @@ class CareerChatbot {
     document.addEventListener('click', (e) => {
       if (e.target.classList.contains('suggestion-btn')) {
         const suggestion = e.target.getAttribute('data-suggestion');
+        const suggestionText = e.target.textContent;
+
+        // Track suggestion click
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'chatbot_suggestion_clicked', {
+            'event_category': 'Chatbot',
+            'event_label': suggestionText,
+            'value': this.chatHistory.length
+          });
+        }
+
         this.sendMessage(suggestion);
       }
     });
@@ -140,6 +151,14 @@ class CareerChatbot {
       notification.style.display = 'none';
       speechBubble.style.display = 'none';
       document.getElementById('chatbot-input').focus();
+
+      // Track chatbot opened
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chatbot_opened', {
+          'event_category': 'Chatbot',
+          'event_label': 'User opened chatbot'
+        });
+      }
     } else {
       container.classList.remove('active');
       toggleBtn.classList.remove('hidden'); // Show toggle button when chatbot is closed
@@ -184,6 +203,15 @@ class CareerChatbot {
     icon.setAttribute('name', 'expand-outline');
     maximizeBtn.setAttribute('title', 'Maximize');
 
+    // Track chatbot closed
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'chatbot_closed', {
+        'event_category': 'Chatbot',
+        'event_label': 'User closed chatbot',
+        'value': this.chatHistory.length
+      });
+    }
+
     // Show speech bubble again when closed
     setTimeout(() => {
       if (speechBubble) speechBubble.style.display = 'block';
@@ -220,57 +248,94 @@ class CareerChatbot {
   async sendMessage(messageText = null) {
     const input = document.getElementById('chatbot-input');
     const message = messageText || input.value.trim();
-    
+
     if (!message || this.isTyping) return;
 
     // Add user message
     this.addMessage(message, 'user');
-    
+
+    // Track message sent
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'chatbot_message_sent', {
+        'event_category': 'Chatbot',
+        'event_label': 'User sent message',
+        'value': message.length,
+        'message_count': this.chatHistory.filter(m => m.sender === 'user').length + 1
+      });
+    }
+
     // Clear input
     if (!messageText) input.value = '';
 
     // Show typing indicator
     this.showTypingIndicator();
 
+    const startTime = Date.now();
+    let responseMethod = 'unknown';
+
     try {
       let response;
-      
+
       console.log('🚀 Sending message:', message);
       console.log('📡 Gemini service available:', !!this.geminiService);
       console.log('🔧 Supabase configured:', isSupabaseConfigured());
-      
+
       // Use Gemini API if available, otherwise fall back to local search
       if (this.geminiService && isSupabaseConfigured()) {
         const contextData = this.dataLoader ? this.dataLoader.getContextForLLM() : 'No data available';
         console.log('📊 Context data type:', typeof contextData);
         console.log('📊 Context data keys:', contextData && typeof contextData === 'object' ? Object.keys(contextData) : 'N/A');
-        
+
         console.log('⏳ Calling gemini service...');
         response = await this.geminiService.generateResponse(message, contextData);
         console.log('✅ Got response from gemini:', response ? 'SUCCESS' : 'EMPTY');
+        responseMethod = 'gemini_api';
       } else {
         console.log('🔄 Using local processing...');
         response = this.processMessageLocally(message);
+        responseMethod = 'local_fallback';
       }
-      
+
       this.hideTypingIndicator();
-      
+
       if (!response || response.trim() === '') {
         console.warn('⚠️ Empty response received, using fallback');
         response = "I'm sorry, I didn't get a proper response. Could you try rephrasing your question?";
+        responseMethod = 'error_fallback';
       }
-      
+
+      const responseTime = Date.now() - startTime;
+
+      // Track successful response
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chatbot_response_received', {
+          'event_category': 'Chatbot',
+          'event_label': responseMethod,
+          'value': responseTime,
+          'response_length': response.length
+        });
+      }
+
       this.addMessage(response, 'bot');
-      
+
     } catch (error) {
       console.error('❌ Error generating response:', error);
       console.error('❌ Error stack:', error.stack);
       this.hideTypingIndicator();
-      
-      const fallbackResponse = CONFIG.CHATBOT_SETTINGS.fallbackToLocal ? 
+
+      // Track error
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chatbot_error', {
+          'event_category': 'Chatbot',
+          'event_label': error.message || 'Unknown error',
+          'value': Date.now() - startTime
+        });
+      }
+
+      const fallbackResponse = CONFIG.CHATBOT_SETTINGS.fallbackToLocal ?
         this.processMessageLocally(message) :
         "I'm sorry, I'm having trouble responding right now. Please try again later.";
-        
+
       console.log('🔄 Using fallback response:', fallbackResponse);
       this.addMessage(fallbackResponse, 'bot');
     }
