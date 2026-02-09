@@ -32,7 +32,10 @@ jobs:
         
       - name: Extract content for AI
         run: npm run extract
-        
+
+      - name: Disable Jekyll
+        run: touch .nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         
