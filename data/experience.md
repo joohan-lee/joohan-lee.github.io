@@ -1,6 +1,6 @@
 ---
 type: "experience"
-extracted_date: "2025-10-07T03:47:13.280Z"
+extracted_date: "2026-02-09T00:46:02.452Z"
 ---
 
 # Professional Experience
@@ -16,7 +16,7 @@ Leading development of enterprise-scale generative AI applications, multimodal R
 - **Full-stack AI Integration:**Built AI applications with authentication, chatbot, document processing, and user management
 - **Multimodal RAG Pipeline:**Designed and implemented retrieval-augmented generation enhancing domain-specific information retrieval and generation performance
 - **Performance Improvement:**Achieved 20% improvement in response accuracy through advanced optimization techniques
-- **Security Enhancement:**Identified and resolved 15+ security vulnerabilites in production AI application
+- **Security Enhancement:**Identified and resolved 15+ security vulnerabilities in production AI application
 - **Cloud Deployment:**Deployed production applications using AWS EC2 with EBS, Application Load Balancer, Route53, S3, VPC, CloudWatch, Nginx, and Gunicorn
 - **Data Analytics:**Developed a sales data analyzer enabling users to analyze sales data with natural language using LLM, Pandas, and LangChain, incorporating prompt engineering and agentic tools
 **Technologies:**LangChain, HuggingFace, Milvus, AWS Bedrock, PyTorch, TensorFlow, Flask, React, Electron

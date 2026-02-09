@@ -1,12 +1,12 @@
 ---
 type: "skills"
-extracted_date: "2025-10-07T03:47:13.284Z"
+extracted_date: "2026-02-09T00:46:02.457Z"
 ---
 
 # Technical Skills
 
 AI/ML & Deep Learning
-PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, RAG(Retrieval Augemented Generation), Prompt Engineering, Agentic AI, Deep Learning, NLP, Computer Vision, Machine Learning,
+PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, RAG (Retrieval Augmented Generation), Prompt Engineering, Agentic AI, Deep Learning, NLP, Computer Vision, Machine Learning,
 Programming Languages
 Python, JavaScript, TypeScript, C/C++, Java, SQL, HTML, CSS
 Backend & APIs

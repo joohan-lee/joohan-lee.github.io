@@ -2,7 +2,7 @@
 name: "Joohan Lee"
 title: "Gen AI Software Engineer"
 email: "joohan224@gmail.com"
-extracted_date: "2025-10-07T03:47:13.276Z"
+extracted_date: "2026-02-09T00:46:02.450Z"
 ---
 
 
@@ -14,7 +14,7 @@ Gen AI Software Engineer
 
 ---
 type: "experience"
-extracted_date: "2025-10-07T03:47:13.280Z"
+extracted_date: "2026-02-09T00:46:02.452Z"
 ---
 
 # Professional Experience
@@ -30,7 +30,7 @@ Leading development of enterprise-scale generative AI applications, multimodal R
 - **Full-stack AI Integration:**Built AI applications with authentication, chatbot, document processing, and user management
 - **Multimodal RAG Pipeline:**Designed and implemented retrieval-augmented generation enhancing domain-specific information retrieval and generation performance
 - **Performance Improvement:**Achieved 20% improvement in response accuracy through advanced optimization techniques
-- **Security Enhancement:**Identified and resolved 15+ security vulnerabilites in production AI application
+- **Security Enhancement:**Identified and resolved 15+ security vulnerabilities in production AI application
 - **Cloud Deployment:**Deployed production applications using AWS EC2 with EBS, Application Load Balancer, Route53, S3, VPC, CloudWatch, Nginx, and Gunicorn
 - **Data Analytics:**Developed a sales data analyzer enabling users to analyze sales data with natural language using LLM, Pandas, and LangChain, incorporating prompt engineering and agentic tools
 **Technologies:**LangChain, HuggingFace, Milvus, AWS Bedrock, PyTorch, TensorFlow, Flask, React, Electron
@@ -106,7 +106,7 @@ Developed JSON standard interfaces and led multiple projects, gaining valuable e
 
 ---
 type: "projects"
-extracted_date: "2025-10-07T03:47:13.282Z"
+extracted_date: "2026-02-09T00:46:02.454Z"
 ---
 
 # Portfolio Projects
@@ -117,7 +117,7 @@ extracted_date: "2025-10-07T03:47:13.282Z"
 [
 ### Yonsei Smart Mirror
 
-AI Applications (IoT)
+AI Applications (IoT) · Capstone 3rd Place
 
 Developed an**AI-powered IoT smart mirror**with Raspberry Pi 4, featuring intelligent makeup simulation using GAN models, voice control with Google Assistant API, and comprehensive information display including weather, stocks, and calendar integration.
 
@@ -174,7 +174,7 @@ Demonstrates proficiency in**advanced NLP techniques**, multilingual processing,
 [
 ### On-Device AI Communications
 
-Research (Language Models)
+Research (Language Models) · IEEE TWC
 
 placeholder
 
@@ -193,7 +193,7 @@ placeholder
 [
 ### PMNet: Large-Scale Channel Prediction
 
-Research (Computer Vision)
+Research (Computer Vision) · IEEE ICASSP 1st Place
 
 Developed**PMNet**, a neural network specifically designed for large-scale pathloss prediction that won 1st place in the IEEE ICASSP 2023 First Pathloss Radio Map Prediction Challenge.
 
@@ -215,7 +215,7 @@ Achieved**1st place**in the prestigious IEEE ICASSP competition, outperforming a
 [
 ### Generative vs. Predictive Models in Massive MIMO Channel Prediction
 
-Research (Gen AI)
+Research (Gen AI) · IEEE Asilomar
 
 Developed novel**Vector Quantization-based Variational Autoencoder approaches**for robust massive MIMO channel prediction, achieving significant performance improvements in noisy communication environments.
 
@@ -266,7 +266,7 @@ Demonstrates mastery of**multimedia systems engineering**, combining video/image
 [
 ### WikiSER: Software Entity Recognition
 
-Research (NLP)
+Research (NLP) · IEEE ASE
 
 Developed**WikiSER**, a high-quality dataset of 1.7M sentences with 79K labeled software entities, and implemented noise-robust learning frameworks for improved NER performance.
 
@@ -387,13 +387,13 @@ Demonstrates mastery of**systems programming in C**, including socket APIs, proc
 
 ---
 type: "skills"
-extracted_date: "2025-10-07T03:47:13.284Z"
+extracted_date: "2026-02-09T00:46:02.457Z"
 ---
 
 # Technical Skills
 
 AI/ML & Deep Learning
-PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, RAG(Retrieval Augemented Generation), Prompt Engineering, Agentic AI, Deep Learning, NLP, Computer Vision, Machine Learning,
+PyTorch, TensorFlow, LangChain, HuggingFace, AWS Bedrock, RAG (Retrieval Augmented Generation), Prompt Engineering, Agentic AI, Deep Learning, NLP, Computer Vision, Machine Learning,
 Programming Languages
 Python, JavaScript, TypeScript, C/C++, Java, SQL, HTML, CSS
 Backend & APIs
@@ -413,7 +413,7 @@ Other Domains
 
 ---
 type: "education"
-extracted_date: "2025-10-07T03:47:13.285Z"
+extracted_date: "2026-02-09T00:46:02.457Z"
 ---
 
 # Education

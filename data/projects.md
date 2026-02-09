@@ -1,6 +1,6 @@
 ---
 type: "projects"
-extracted_date: "2025-10-07T03:47:13.282Z"
+extracted_date: "2026-02-09T00:46:02.454Z"
 ---
 
 # Portfolio Projects
@@ -11,7 +11,7 @@ extracted_date: "2025-10-07T03:47:13.282Z"
 [
 ### Yonsei Smart Mirror
 
-AI Applications (IoT)
+AI Applications (IoT) · Capstone 3rd Place
 
 Developed an**AI-powered IoT smart mirror**with Raspberry Pi 4, featuring intelligent makeup simulation using GAN models, voice control with Google Assistant API, and comprehensive information display including weather, stocks, and calendar integration.
 
@@ -68,7 +68,7 @@ Demonstrates proficiency in**advanced NLP techniques**, multilingual processing,
 [
 ### On-Device AI Communications
 
-Research (Language Models)
+Research (Language Models) · IEEE TWC
 
 placeholder
 
@@ -87,7 +87,7 @@ placeholder
 [
 ### PMNet: Large-Scale Channel Prediction
 
-Research (Computer Vision)
+Research (Computer Vision) · IEEE ICASSP 1st Place
 
 Developed**PMNet**, a neural network specifically designed for large-scale pathloss prediction that won 1st place in the IEEE ICASSP 2023 First Pathloss Radio Map Prediction Challenge.
 
@@ -109,7 +109,7 @@ Achieved**1st place**in the prestigious IEEE ICASSP competition, outperforming a
 [
 ### Generative vs. Predictive Models in Massive MIMO Channel Prediction
 
-Research (Gen AI)
+Research (Gen AI) · IEEE Asilomar
 
 Developed novel**Vector Quantization-based Variational Autoencoder approaches**for robust massive MIMO channel prediction, achieving significant performance improvements in noisy communication environments.
 
@@ -160,7 +160,7 @@ Demonstrates mastery of**multimedia systems engineering**, combining video/image
 [
 ### WikiSER: Software Entity Recognition
 
-Research (NLP)
+Research (NLP) · IEEE ASE
 
 Developed**WikiSER**, a high-quality dataset of 1.7M sentences with 79K labeled software entities, and implemented noise-robust learning frameworks for improved NER performance.
 
