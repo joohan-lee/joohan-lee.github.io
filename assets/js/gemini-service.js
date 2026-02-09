@@ -144,17 +144,8 @@ Complete Career Profile:\n`;
         console.log('='.repeat(80));
       }
 
-      // Prepare the conversation context
-      const messages = [
-        {
-          role: 'user',
-          parts: [{ text: systemPrompt }]
-        },
-        {
-          role: 'model',
-          parts: [{ text: 'I understand. I\'m ready to help visitors learn about Joohan Lee\'s career background. How can I assist?' }]
-        }
-      ];
+      // Prepare conversation messages (history + current question only)
+      const messages = [];
 
       // Add recent conversation history for context
       this.conversationHistory.slice(-4).forEach(msg => {
@@ -174,6 +165,9 @@ Complete Career Profile:\n`;
       this.saveConversationLog(userMessage, systemPrompt, messages);
 
       const requestBody = {
+        system_instruction: {
+          parts: [{ text: systemPrompt }]
+        },
         contents: messages,
         generationConfig: {
           temperature: 0.7,
